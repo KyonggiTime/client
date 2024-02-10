@@ -109,7 +109,7 @@ export default function Home() {
 							<span className="text-sm text-center">{lecture.credit}</span>
 							<span className="text-sm text-center">{lecture.grade}</span>
 							<span className="text-sm text-center">{lecture.group}</span>
-							<span className="text-sm text-center">{zeroFill(lecture.id + "", 4)}</span>
+							<span className="text-sm text-center">{zeroFill(lecture.lectureNumber + "", 4)}</span>
 							<span className="text-sm text-center">{lecture.major}</span>
 							<span className="text-sm text-center">{lecture.name}</span>
 							<span className="text-sm text-center">{lecture.professor}</span>
