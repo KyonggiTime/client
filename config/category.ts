@@ -1,5 +1,9 @@
 export const CATEGORY = [
   {
+    key: "",
+    label: "선택 안 함",
+  },
+  {
     key: "인성",
     label: "진성애인성",
   },

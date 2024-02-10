@@ -10,7 +10,7 @@ export class LectureApi {
             cache: 'no-cache'
         });
         const body = await res.json();
-        return body.lectures;
+        return body.data.lectures;
     } catch (error) {
         console.error(error);
         throw error;

@@ -18,5 +18,9 @@ export const GRADE = [
   {
     key: "4",
     label: "4학년",
+  },
+  {
+    key: "5",
+    label: "5학년",
   }
 ];

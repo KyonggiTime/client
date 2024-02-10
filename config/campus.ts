@@ -1,5 +1,9 @@
 export const CAMPUS = [
   {
+    key: "",
+    label: "전체",
+  },
+  {
     key: "수원",
     label: "수원캠퍼스",
   },
