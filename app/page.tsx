@@ -90,15 +90,19 @@ export default function Home() {
 					검색
 				</Button>
 			</Card>
-			<Card className="flex-col items-center justify-center shadow-m p-4 gap-2 w-full">
-				<Card className="grid grid-cols-11 gap-4 w-full p-2 text-center">
+			<Card className="flex-col items-center justify-center shadow-m p-4 mt-2 gap-4 w-full">
+				<Card className="w-full">
+						<h1 className="text-red-500">주의</h1>
+						<h2 className="text-red-500">누락된 강의나 잘못 기입된 강의가 존재할 수 있습니다. 시간표를 다 만드시고 나서 꼭 kutis로 확인해주세요!!</h2>
+				</Card>
+				<Card className="grid grid-cols-11 w-full p-2 text-center">
 						<span className="text-sm text-center">캠퍼스</span>
 						<span className="text-sm text-center">이수구분</span>
 						<span className="text-sm text-center">학점</span>
 						<span className="text-sm text-center">학년</span>
 						<span className="text-sm text-center">시간대구분</span>
 						<span className="text-sm text-center">강의번호</span>
-						<span className="text-sm text-center">과 이름</span>
+						<span className="text-sm text-center">학과</span>
 						<span className="text-sm text-center">이름</span>
 						<span className="text-sm text-center">교수</span>
 						<span className="text-sm text-center">강의실</span>
@@ -106,7 +110,7 @@ export default function Home() {
 				</Card>
 				{
 					lectures.map(lecture => (
-						<Card className="grid grid-cols-11 gap-4 w-full p-2" key={lecture.id}>
+						<Card className="grid grid-cols-11 w-full p-2" key={lecture.id}>
 							<span className="text-sm text-center">{lecture.campusName}</span>
 							<span className="text-sm text-center">{lecture.category}</span>
 							<span className="text-sm text-center">{lecture.credit}</span>
