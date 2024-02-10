@@ -1,12 +1,25 @@
 import { Constants } from "@/config/constants";
 
 export class LectureApi {
-  static async loadLectures(condition: Record<string, string>): Promise<Record<string, string>[]> {
+  static async loadLectures(
+    dto: {
+      name?: string,
+      professor?: string,
+      major?: string,
+      campusName?: string,
+      category?: string,
+      group?: string,
+      lectureNumber?: string,
+      grade?: string,
+    }
+  ): Promise<Record<string, string>[]> {
+    const query = new URLSearchParams(dto).toString().replace(/(?:\&|^)[^\&]*?\=(?=\&|$)/g, '');
     try {
-        const res = await fetch(`${Constants.serverAddress}/lecture`, {
+        const res = await fetch(`${Constants.serverAddress}/lecture?${query}`, {
             headers: {
                 'Content-Type': 'application/json',
             },
+            
             cache: 'no-cache'
         });
         const body = await res.json();

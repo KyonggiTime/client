@@ -15,8 +15,11 @@ export default function Home() {
 	const [campus, setCampus] = useState<string>("");
 	const [category, setCategory] = useState<string>("");
 	const [grade, setGrade] = useState<string>("");
+	const [professor, setProfessor] = useState<string>("");
+	const [name, setName] = useState<string>("");
+	const [major, setMajor] = useState<string>("");
 	const onSearchButtonClicked = async () => {
-		const lecturesFromApi = await LectureApi.loadLectures({});
+		const lecturesFromApi = await LectureApi.loadLectures({campusName: campus, category, grade, professor, name, major});
 		setLectures(lecturesFromApi);
 		console.log(lecturesFromApi);
 	}
@@ -33,7 +36,7 @@ export default function Home() {
 								{ campus || "캠퍼스 선택" }
 							</Button>
 						</DropdownTrigger>
-						<DropdownMenu items={CAMPUS} selectionMode="single" onSelectionChange={keys => setCampus(keys.valueOf() as string)}>
+						<DropdownMenu items={CAMPUS} selectionMode="single" onSelectionChange={keys => setCampus(Array.from(keys).join(", ").replaceAll("_", " "))}>
 							{(item: {key: string, label: string}) => (
 								<DropdownItem
 									key={item.key}
@@ -51,7 +54,7 @@ export default function Home() {
 								{ category || "이수구분 선택" }
 							</Button>
 						</DropdownTrigger>
-						<DropdownMenu items={CATEGORY} selectionMode="single" onSelectionChange={keys => setCategory(keys.valueOf() as string)}>
+						<DropdownMenu items={CATEGORY} selectionMode="single" onSelectionChange={keys => setCategory(Array.from(keys).join(", ").replaceAll("_", " "))}>
 							{(item: {key: string, label: string}) => (
 								<DropdownItem
 									key={item.key}
@@ -66,10 +69,10 @@ export default function Home() {
 							<Button 
 								variant="bordered" 
 							>
-								{ grade || "이수구분 선택" }
+								{ grade || "학년 선택" }
 							</Button>
 						</DropdownTrigger>
-						<DropdownMenu items={GRADE} selectionMode="single" onSelectionChange={keys => setGrade(keys.valueOf() as string)}>
+						<DropdownMenu items={GRADE} selectionMode="single" onSelectionChange={keys => setGrade(Array.from(keys).join(", ").replaceAll("_", " "))}>
 							{(item: {key: string, label: string}) => (
 								<DropdownItem
 									key={item.key}
@@ -79,9 +82,9 @@ export default function Home() {
 							)}
 						</DropdownMenu>
 					</Dropdown>
-					<Input type="title" placeholder="과목명" className="m-2 w-30" variant="bordered" />
-					<Input type="title" placeholder="교수명" className="m-2 w-30" variant="bordered" />
-					<Input type="title" placeholder="학과명" className="m-2 w-30" variant="bordered" />
+					<Input type="title" placeholder="과목명" className="m-2 w-30" variant="bordered" onChange={(e) => setName(e.target.value)}/>
+					<Input type="title" placeholder="교수명" className="m-2 w-30" variant="bordered" onChange={(e) => setProfessor(e.target.value)}/>
+					<Input type="title" placeholder="학과명" className="m-2 w-30" variant="bordered" onChange={(e) => setMajor(e.target.value)}/>
 				</div>
 				<Button variant="shadow" color="primary" className="w-full m-2" onClick={onSearchButtonClicked}>
 					검색
