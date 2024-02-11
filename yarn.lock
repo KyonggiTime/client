@@ -381,6 +381,24 @@
     "@react-aria/utils" "^3.18.0"
     "@react-types/shared" "^3.18.1"
 
+"@nextui-org/checkbox@^2.0.25":
+  version "2.0.25"
+  resolved "https://registry.yarnpkg.com/@nextui-org/checkbox/-/checkbox-2.0.25.tgz#d4a412d30ea87faef69152f5187cc76e9a32852f"
+  integrity sha512-X6WkwPbZlDvioEcXF6HhKH21wD6OK+3+FSroKkzMPQLJrj2KYUIYGbiuw9rT9aCtdjbT+6HUCv+FA8/cBQr7cA==
+  dependencies:
+    "@nextui-org/react-utils" "2.0.10"
+    "@nextui-org/shared-utils" "2.0.4"
+    "@nextui-org/use-aria-press" "2.0.1"
+    "@react-aria/checkbox" "^3.11.2"
+    "@react-aria/focus" "^3.14.3"
+    "@react-aria/interactions" "^3.19.1"
+    "@react-aria/utils" "^3.21.1"
+    "@react-aria/visually-hidden" "^3.8.6"
+    "@react-stately/checkbox" "^3.5.1"
+    "@react-stately/toggle" "^3.6.3"
+    "@react-types/checkbox" "^3.5.2"
+    "@react-types/shared" "^3.21.0"
+
 "@nextui-org/code@2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@nextui-org/code/-/code-2.0.0.tgz#5fa416f677cd98b760b95c13a86a7aaa9bfeb357"
@@ -1118,6 +1136,22 @@
     "@react-types/shared" "^3.22.0"
     "@swc/helpers" "^0.5.0"
 
+"@react-aria/checkbox@^3.11.2":
+  version "3.13.0"
+  resolved "https://registry.yarnpkg.com/@react-aria/checkbox/-/checkbox-3.13.0.tgz#05d6f94204b56ed73119a9eeb825343f183b4fd5"
+  integrity sha512-eylJwtADIPKJ1Y5rITNJm/8JD8sXG2nhiZBIg1ko44Szxrpu+Le53NoGtg8nlrfh9vbUrXVvuFtf2jxbPXR5Jw==
+  dependencies:
+    "@react-aria/form" "^3.0.1"
+    "@react-aria/label" "^3.7.4"
+    "@react-aria/toggle" "^3.10.0"
+    "@react-aria/utils" "^3.23.0"
+    "@react-stately/checkbox" "^3.6.1"
+    "@react-stately/form" "^3.0.0"
+    "@react-stately/toggle" "^3.7.0"
+    "@react-types/checkbox" "^3.6.0"
+    "@react-types/shared" "^3.22.0"
+    "@swc/helpers" "^0.5.0"
+
 "@react-aria/dialog@^3.5.4":
   version "3.5.4"
   resolved "https://registry.yarnpkg.com/@react-aria/dialog/-/dialog-3.5.4.tgz#d2a049e94fe2623e916a020455a5960cf7dc0fec"
@@ -1164,6 +1198,17 @@
     "@react-types/shared" "^3.22.0"
     "@swc/helpers" "^0.5.0"
     clsx "^2.0.0"
+
+"@react-aria/form@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@react-aria/form/-/form-3.0.1.tgz#2fdb28231cbee80684c9500e606da42e4ca65318"
+  integrity sha512-6586oODMDR4/ciGRwXjpvEAg7tWGSDrXE//waK0n5e5sMuzlPOo1DHc5SpPTvz0XdJsu6VDt2rHdVWVIC9LEyw==
+  dependencies:
+    "@react-aria/interactions" "^3.20.1"
+    "@react-aria/utils" "^3.23.0"
+    "@react-stately/form" "^3.0.0"
+    "@react-types/shared" "^3.22.0"
+    "@swc/helpers" "^0.5.0"
 
 "@react-aria/i18n@^3.10.0", "@react-aria/i18n@^3.8.4":
   version "3.10.0"
@@ -1221,6 +1266,15 @@
     "@react-aria/utils" "^3.19.0"
     "@react-types/label" "^3.7.5"
     "@react-types/shared" "^3.19.0"
+    "@swc/helpers" "^0.5.0"
+
+"@react-aria/label@^3.7.4":
+  version "3.7.4"
+  resolved "https://registry.yarnpkg.com/@react-aria/label/-/label-3.7.4.tgz#c7ba2c9d795b05da9f041eace9211d3c71b11c64"
+  integrity sha512-3Y0yyrqpLzZdzHw+TOyzwuyx5wa2ujU5DGfKuL5GFnU9Ii4DtdwBGSYS7Yu7qadU+eQmG4OGhAgFVswbIgIwJw==
+  dependencies:
+    "@react-aria/utils" "^3.23.0"
+    "@react-types/shared" "^3.22.0"
     "@swc/helpers" "^0.5.0"
 
 "@react-aria/link@^3.5.2":
@@ -1337,6 +1391,18 @@
     "@react-types/textfield" "^3.7.3"
     "@swc/helpers" "^0.5.0"
 
+"@react-aria/toggle@^3.10.0":
+  version "3.10.0"
+  resolved "https://registry.yarnpkg.com/@react-aria/toggle/-/toggle-3.10.0.tgz#4869ef2858938e05aadd4c41b1db115aca349fda"
+  integrity sha512-6cUf4V9TuG2J7AvXUdU/GspEPFCubUOID3mrselSe563RViy+mMZk0vUEOdyoNanDcEXl58W4dE3SGWxFn71vg==
+  dependencies:
+    "@react-aria/focus" "^3.16.0"
+    "@react-aria/interactions" "^3.20.1"
+    "@react-aria/utils" "^3.23.0"
+    "@react-stately/toggle" "^3.7.0"
+    "@react-types/checkbox" "^3.6.0"
+    "@swc/helpers" "^0.5.0"
+
 "@react-aria/toggle@^3.7.0":
   version "3.7.0"
   resolved "https://registry.yarnpkg.com/@react-aria/toggle/-/toggle-3.7.0.tgz#2c680a521789418ae3924dab6376ae9361b1c5f4"
@@ -1397,13 +1463,24 @@
     "@swc/helpers" "^0.5.0"
     clsx "^1.1.1"
 
-"@react-aria/visually-hidden@^3.8.8":
+"@react-aria/visually-hidden@^3.8.6", "@react-aria/visually-hidden@^3.8.8":
   version "3.8.8"
   resolved "https://registry.yarnpkg.com/@react-aria/visually-hidden/-/visually-hidden-3.8.8.tgz#0f2a70ca21974154383080cf486caff5e7f2240f"
   integrity sha512-Cn2PYKD4ijGDtF0+dvsh8qa4y7KTNAlkTG6h20r8Q+6UTyRNmtE2/26QEaApRF8CBiNy9/BZC/ZC4FK2OjvCoA==
   dependencies:
     "@react-aria/interactions" "^3.20.1"
     "@react-aria/utils" "^3.23.0"
+    "@react-types/shared" "^3.22.0"
+    "@swc/helpers" "^0.5.0"
+
+"@react-stately/checkbox@^3.5.1", "@react-stately/checkbox@^3.6.1":
+  version "3.6.1"
+  resolved "https://registry.yarnpkg.com/@react-stately/checkbox/-/checkbox-3.6.1.tgz#2e213b2ca39f10410827d12f35bc7210727767f3"
+  integrity sha512-rOjFeVBy32edYwhKiHj3ZLdLeO+xZ2fnBwxnOBjcygnw4Neygm8FJH/dB1J0hdYYR349yby86ED2x0wRc84zPw==
+  dependencies:
+    "@react-stately/form" "^3.0.0"
+    "@react-stately/utils" "^3.9.0"
+    "@react-types/checkbox" "^3.6.0"
     "@react-types/shared" "^3.22.0"
     "@swc/helpers" "^0.5.0"
 
@@ -1419,6 +1496,14 @@
   version "3.10.4"
   resolved "https://registry.yarnpkg.com/@react-stately/collections/-/collections-3.10.4.tgz#aa81328a0996ba39ee39d469e65135812ebecef1"
   integrity sha512-OHhCrItGt4zB2bSrgObRo0H2SC7QlkH8ReGxo+NVIWchXRLRoiWBP7S+IwleewEo5gOqDVPY3hqA9n4iiI8twg==
+  dependencies:
+    "@react-types/shared" "^3.22.0"
+    "@swc/helpers" "^0.5.0"
+
+"@react-stately/form@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@react-stately/form/-/form-3.0.0.tgz#584af339a128045c357c1b8ca440c87460a41b0f"
+  integrity sha512-C8wkfFmtx1escizibhdka5JvTy9/Vp173CS9cakjvWTmnjYYC1nOlzwp7BsYWTgerCFbRY/BU/Cf/bJDxPiUKQ==
   dependencies:
     "@react-types/shared" "^3.22.0"
     "@swc/helpers" "^0.5.0"
@@ -1536,7 +1621,7 @@
   dependencies:
     "@react-types/shared" "^3.19.0"
 
-"@react-types/checkbox@^3.6.0":
+"@react-types/checkbox@^3.5.2", "@react-types/checkbox@^3.6.0":
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/@react-types/checkbox/-/checkbox-3.6.0.tgz#ba702be25555c1520f78be39c8260354638792b6"
   integrity sha512-vgbuJzQpVCNT5AZWV0OozXCnihqrXxoZKfJFIw0xro47pT2sn3t5UC4RA9wfjDGMoK4frw1K/4HQLsQIOsPBkw==
