@@ -4,6 +4,7 @@ import { Providers } from "./providers";
 import clsx from "clsx";
 import { Divider } from "@nextui-org/divider";
 import { HeaderBar } from "@/components/header-bar.component";
+import { Analytics } from '@vercel/analytics/react';
 
 export const metadata: Metadata = {
 	title: {
@@ -50,6 +51,7 @@ export default function RootLayout({
 						</footer>
 					</div>
 				</Providers>
+				<Analytics />
 			</body>
 		</html>
 	);
