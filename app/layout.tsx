@@ -31,7 +31,7 @@ export default function RootLayout({
 			<head />
 			<body
 				className={clsx(
-					"min-h-screen bg-background font-sans antialiased",
+					"bg-gray-200 font-sans antialiased mi min-h-[1100vh]",
 				)}
 			>
 				<HeaderBar />
