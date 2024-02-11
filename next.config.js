@@ -1,11 +1,15 @@
 /** @type {import('next').NextConfig} */
+const withPWA = require("next-pwa")({
+  dest: 'public'
+});
+
 const nextConfig = {
   eslint: {
       ignoreDuringBuilds: true,
   },
   typescript: {
     ignoreBuildErrors: true,
-  }
+  },
 }
 
-module.exports = nextConfig
+module.exports = withPWA(nextConfig);
