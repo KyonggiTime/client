@@ -30,7 +30,7 @@ export const LargeLecture = ({
             <span className="text-sm text-center">{lecture.room}</span>
             <span className="text-sm text-center">{lecture.time}</span>
 						<span className="text-sm text-center col-span-2">시간대구분</span>
-						<span className="text-sm text-center">시간표 추가</span>
+						<span className="text-sm text-center">&nbsp;</span>
             <span className="text-sm text-center col-span-2">{lecture.group}</span>
             <Button color="primary" onClick={onClick}>
               { buttonText }

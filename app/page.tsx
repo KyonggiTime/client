@@ -181,13 +181,20 @@ export default function Home() {
 				<h1 className="text-red-500">주의</h1>
 				<h2 className="text-red-500">잘못 기입된 강의가 존재할 수 있습니다. 시간표를 다 만드시고 나서 꼭 수강신청 사이트에서 확인해주세요!!</h2>
 				{
-					lectures.map(lecture => (
-						<Lecture
-							lecture={lecture}
-							onClick={() => onAddLectureButtonClicked(lecture)}
-							buttonText={timeTable.lectures.some(item => item.id == lecture.id) ? "제거" : "추가"}
-							key={lecture.id} />
-					))
+						lectures.map(lecture => (
+								width <= 800 ? 
+									<LargeLecture
+									lecture={lecture}
+									onClick={() => onAddLectureButtonClicked(lecture)}
+									buttonText={timeTable.lectures.some(item => item.id == lecture.id) ? "제거" : "추가"}
+									key={lecture.id} />
+								:
+									<Lecture
+									lecture={lecture}
+									onClick={() => onAddLectureButtonClicked(lecture)}
+									buttonText={timeTable.lectures.some(item => item.id == lecture.id) ? "제거" : "추가"}
+									key={lecture.id} />
+						))
 				}
 			</Card>
 		</>
