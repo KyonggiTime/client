@@ -8,6 +8,8 @@ import { GRADE } from "@/config/grade";
 import { LectureApi } from "./api/lecture.api";
 import { useEffect, useState } from "react";
 import { hasDuplicates, splitTime, zeroFill } from "@/util/util";
+import { Lecture } from "@/components/lecture.component";
+import { LargeLecture } from "@/components/large-lecture.component";
 
 export default function Home() {
 	const [lectures, setLectures] = useState<Record<string, string>[]>([]);
@@ -17,6 +19,17 @@ export default function Home() {
 	const [name, setName] = useState<string>("");
 	const [timezone, setTimezone] = useState<string>("");
 	const [major, setMajor] = useState<string>("");
+	const [width, setWidth] = useState<number>(0);
+
+	const handleWindowSizeChange = () => {
+			setWidth(window.innerWidth);
+	}
+	useEffect(() => {
+			window.addEventListener('resize', handleWindowSizeChange);
+			return () => {
+					window.removeEventListener('resize', handleWindowSizeChange);
+			}
+	}, []);
 	const [timeTable, setTimeTable] = useState<Record<string, unknown[]>>({
     '월': [],
     '화': [],
@@ -87,56 +100,38 @@ export default function Home() {
 					{
 						[1,2,3,4,5,6,7,8,9,10].map((item) => (
 							<div className="grid grid-cols-5 text-center" key={item}>
-									<div className="text-sm text-center p-2 border-blue-300 border">{ timeTable['월'].some(time => time.time == item) ? timeTable['월'].find(time => time.time == item).lecture.name : '-' }</div>
-									<div className="text-sm text-center p-2 border-blue-300 border">{ timeTable['화'].some(time => time.time == item) ? timeTable['화'].find(time => time.time == item).lecture.name : '-' }</div>
-									<div className="text-sm text-center p-2 border-blue-300 border">{ timeTable['수'].some(time => time.time == item) ? timeTable['수'].find(time => time.time == item).lecture.name : '-' }</div>
-									<div className="text-sm text-center p-2 border-blue-300 border">{ timeTable['목'].some(time => time.time == item) ? timeTable['목'].find(time => time.time == item).lecture.name : '-' }</div>
-									<div className="text-sm text-center p-2 border-blue-300 border">{ timeTable['금'].some(time => time.time == item) ? timeTable['금'].find(time => time.time == item).lecture.name : '-' }</div>
+									<div className="text-sm sm:text-md text-center sm:p-2 border-blue-300 border">{ timeTable['월'].some(time => time.time == item) ? timeTable['월'].find(time => time.time == item).lecture.name : '-' }</div>
+									<div className="text-sm sm:text-md text-center sm:p-2 border-blue-300 border">{ timeTable['화'].some(time => time.time == item) ? timeTable['화'].find(time => time.time == item).lecture.name : '-' }</div>
+									<div className="text-sm sm:text-md text-center sm:p-2 border-blue-300 border">{ timeTable['수'].some(time => time.time == item) ? timeTable['수'].find(time => time.time == item).lecture.name : '-' }</div>
+									<div className="text-sm sm:text-md text-center sm:p-2 border-blue-300 border">{ timeTable['목'].some(time => time.time == item) ? timeTable['목'].find(time => time.time == item).lecture.name : '-' }</div>
+									<div className="text-sm sm:text-md text-center sm:p-2 border-blue-300 border">{ timeTable['금'].some(time => time.time == item) ? timeTable['금'].find(time => time.time == item).lecture.name : '-' }</div>
 							</div>
 						))
 					}
 				</div>
 			</Card>
-
-
 			<Card className="flex-col items-center justify-center p-4 mt-2 gap-4 w-full">
 				<h1 className="text-center">추가한 강의 목록</h1>
-				<div className="grid grid-cols-11 w-full p-2 text-center">
-						<span className="text-sm text-center">캠퍼스</span>
-						<span className="text-sm text-center">학점</span>
-						<span className="text-sm text-center">학년</span>
-						<span className="text-sm text-center">시간대구분</span>
-						<span className="text-sm text-center">강의번호</span>
-						<span className="text-sm text-center">학과</span>
-						<span className="text-sm text-center">이름</span>
-						<span className="text-sm text-center">교수</span>
-						<span className="text-sm text-center">강의실</span>
-						<span className="text-sm text-center">시간</span>
-						<span className="text-sm text-center">시간표 추가</span>
-				</div>
 				{
 					timeTable.lectures.map(lecture => (
-						<Card className="grid grid-cols-11 w-full p-2" key={lecture.id}>
-							<span className="text-sm text-center">{lecture.campusName}</span>
-							<span className="text-sm text-center">{lecture.credit}</span>
-							<span className="text-sm text-center">{lecture.grade}</span>
-							<span className="text-sm text-center">{lecture.group}</span>
-							<span className="text-sm text-center">{zeroFill(lecture.lectureNumber + "", 4)}</span>
-							<span className="text-sm text-center">{lecture.major}</span>
-							<span className="text-sm text-center">{lecture.name}</span>
-							<span className="text-sm text-center">{lecture.professor}</span>
-							<span className="text-sm text-center">{lecture.room}</span>
-							<span className="text-sm text-center">{lecture.time}</span>
-							<Button color="primary" onClick={() => onAddLectureButtonClicked(lecture)}>
-								{ timeTable.lectures.some(item => item.id == lecture.id) ? "제거" : "추가"}
-							</Button>
-					</Card>
+							width <= 800 ? 
+								<LargeLecture
+								lecture={lecture}
+								onClick={() => onAddLectureButtonClicked(lecture)}
+								buttonText={timeTable.lectures.some(item => item.id == lecture.id) ? "제거" : "추가"}
+								key={lecture.id} />
+							:
+								<Lecture
+								lecture={lecture}
+								onClick={() => onAddLectureButtonClicked(lecture)}
+								buttonText={timeTable.lectures.some(item => item.id == lecture.id) ? "제거" : "추가"}
+								key={lecture.id} />
 					))
 				}
 			</Card>
 
-			<Card className="flex-col items-center justify-center mt-2 p-4 w-full">
-				<div className="flex items-center w-full">
+			<Card className="flex-col flex-wrap items-center justify-center mt-2 p-4 w-full">
+				<div className="flex flex-wrap items-center w-full">
 					<Dropdown>
 						<DropdownTrigger className="mr-2">
 							<Button 
@@ -185,36 +180,13 @@ export default function Home() {
 			<Card className="flex-col items-center justify-center p-4 mt-2 gap-4 w-full">
 				<h1 className="text-red-500">주의</h1>
 				<h2 className="text-red-500">잘못 기입된 강의가 존재할 수 있습니다. 시간표를 다 만드시고 나서 꼭 수강신청 사이트에서 확인해주세요!!</h2>
-				<div className="grid grid-cols-11 w-full p-2 text-center">
-						<span className="text-sm text-center">캠퍼스</span>
-						<span className="text-sm text-center">학점</span>
-						<span className="text-sm text-center">학년</span>
-						<span className="text-sm text-center">시간대구분</span>
-						<span className="text-sm text-center">강의번호</span>
-						<span className="text-sm text-center">학과</span>
-						<span className="text-sm text-center">이름</span>
-						<span className="text-sm text-center">교수</span>
-						<span className="text-sm text-center">강의실</span>
-						<span className="text-sm text-center">시간</span>
-						<span className="text-sm text-center">시간표 추가</span>
-				</div>
 				{
 					lectures.map(lecture => (
-						<Card className="grid grid-cols-11 w-full p-2" key={lecture.id}>
-							<span className="text-sm text-center">{lecture.campusName}</span>
-							<span className="text-sm text-center">{lecture.credit}</span>
-							<span className="text-sm text-center">{lecture.grade}</span>
-							<span className="text-sm text-center">{lecture.group}</span>
-							<span className="text-sm text-center">{zeroFill(lecture.lectureNumber + "", 4)}</span>
-							<span className="text-sm text-center">{lecture.major}</span>
-							<span className="text-sm text-center">{lecture.name}</span>
-							<span className="text-sm text-center">{lecture.professor}</span>
-							<span className="text-sm text-center">{lecture.room}</span>
-							<span className="text-sm text-center">{lecture.time}</span>
-							<Button color="primary" onClick={() => onAddLectureButtonClicked(lecture)}>
-								{ timeTable.lectures.some(item => item.id == lecture.id) ? "제거" : "추가"}
-							</Button>
-					</Card>
+						<Lecture
+							lecture={lecture}
+							onClick={() => onAddLectureButtonClicked(lecture)}
+							buttonText={timeTable.lectures.some(item => item.id == lecture.id) ? "제거" : "추가"}
+							key={lecture.id} />
 					))
 				}
 			</Card>
