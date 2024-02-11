@@ -4,19 +4,18 @@ import { Input } from "@nextui-org/input";
 import { Button } from "@nextui-org/button";
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@nextui-org/dropdown";
 import { CAMPUS } from "@/config/campus";
-import { CATEGORY } from "@/config/category";
 import { GRADE } from "@/config/grade";
 import { LectureApi } from "./api/lecture.api";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { hasDuplicates, splitTime, zeroFill } from "@/util/util";
 
 export default function Home() {
 	const [lectures, setLectures] = useState<Record<string, string>[]>([]);
 	const [campus, setCampus] = useState<string>("");
-	const [category, setCategory] = useState<string>("");
 	const [grade, setGrade] = useState<string>("");
 	const [professor, setProfessor] = useState<string>("");
 	const [name, setName] = useState<string>("");
+	const [timezone, setTimezone] = useState<string>("");
 	const [major, setMajor] = useState<string>("");
 	const [timeTable, setTimeTable] = useState<Record<string, unknown[]>>({
     '월': [],
@@ -26,8 +25,16 @@ export default function Home() {
     '금': [],
 		lectures: []
   });
+
+  useEffect(() => {
+    const savedTimeTable = localStorage.getItem('timeTable');
+		if (savedTimeTable != null) {
+			setTimeTable(JSON.parse(savedTimeTable));
+		}
+  }, []);
+
 	const onSearchButtonClicked = async () => {
-		const lecturesFromApi = await LectureApi.loadLectures({campusName: campus, category, grade, professor, name, major});
+		const lecturesFromApi = await LectureApi.loadLectures({campusName: campus, grade, professor, name, major, group: timezone});
 		setLectures(lecturesFromApi);
 	}
 
@@ -59,6 +66,10 @@ export default function Home() {
 			...newTimeTable,
 			lectures,
 		});
+		localStorage.setItem('timeTable', JSON.stringify({
+			...newTimeTable,
+			lectures,
+		}));
 	}
 
 	return (
@@ -90,9 +101,8 @@ export default function Home() {
 
 			<Card className="flex-col items-center justify-center p-4 mt-2 gap-4 w-full">
 				<h1 className="text-center">추가한 강의 목록</h1>
-				<div className="grid grid-cols-12 w-full p-2 text-center">
+				<div className="grid grid-cols-11 w-full p-2 text-center">
 						<span className="text-sm text-center">캠퍼스</span>
-						<span className="text-sm text-center">이수구분</span>
 						<span className="text-sm text-center">학점</span>
 						<span className="text-sm text-center">학년</span>
 						<span className="text-sm text-center">시간대구분</span>
@@ -102,13 +112,12 @@ export default function Home() {
 						<span className="text-sm text-center">교수</span>
 						<span className="text-sm text-center">강의실</span>
 						<span className="text-sm text-center">시간</span>
-						<span className="text-sm text-center">추가여부</span>
+						<span className="text-sm text-center">시간표 추가</span>
 				</div>
 				{
 					timeTable.lectures.map(lecture => (
-						<Card className="grid grid-cols-12 w-full p-2" key={lecture.id}>
+						<Card className="grid grid-cols-11 w-full p-2" key={lecture.id}>
 							<span className="text-sm text-center">{lecture.campusName}</span>
-							<span className="text-sm text-center">{lecture.category}</span>
 							<span className="text-sm text-center">{lecture.credit}</span>
 							<span className="text-sm text-center">{lecture.grade}</span>
 							<span className="text-sm text-center">{lecture.group}</span>
@@ -151,24 +160,6 @@ export default function Home() {
 							<Button 
 								variant="bordered" 
 							>
-								{ category || "이수구분 선택" }
-							</Button>
-						</DropdownTrigger>
-						<DropdownMenu items={CATEGORY} selectionMode="single" onSelectionChange={keys => setCategory(Array.from(keys).join(", ").replaceAll("_", " "))}>
-							{(item: {key: string, label: string}) => (
-								<DropdownItem
-									key={item.key}
-								>
-									{item.label}
-								</DropdownItem>
-							)}
-						</DropdownMenu>
-					</Dropdown>
-					<Dropdown>
-						<DropdownTrigger className="m-2">
-							<Button 
-								variant="bordered" 
-							>
 								{ grade || "학년 선택" }
 							</Button>
 						</DropdownTrigger>
@@ -185,6 +176,7 @@ export default function Home() {
 					<Input type="title" placeholder="과목명" className="m-2 w-30" variant="bordered" onChange={(e) => setName(e.target.value)}/>
 					<Input type="title" placeholder="교수명" className="m-2 w-30" variant="bordered" onChange={(e) => setProfessor(e.target.value)}/>
 					<Input type="title" placeholder="학과명" className="m-2 w-30" variant="bordered" onChange={(e) => setMajor(e.target.value)}/>
+					<Input type="title" placeholder="시간대구분명" className="m-2 w-30" variant="bordered" onChange={(e) => setTimezone(e.target.value)}/>
 				</div>
 				<Button variant="shadow" color="primary" className="w-full m-2" onClick={onSearchButtonClicked}>
 					검색
@@ -193,9 +185,8 @@ export default function Home() {
 			<Card className="flex-col items-center justify-center p-4 mt-2 gap-4 w-full">
 				<h1 className="text-red-500">주의</h1>
 				<h2 className="text-red-500">잘못 기입된 강의가 존재할 수 있습니다. 시간표를 다 만드시고 나서 꼭 수강신청 사이트에서 확인해주세요!!</h2>
-				<div className="grid grid-cols-12 w-full p-2 text-center">
+				<div className="grid grid-cols-11 w-full p-2 text-center">
 						<span className="text-sm text-center">캠퍼스</span>
-						<span className="text-sm text-center">이수구분</span>
 						<span className="text-sm text-center">학점</span>
 						<span className="text-sm text-center">학년</span>
 						<span className="text-sm text-center">시간대구분</span>
@@ -205,13 +196,12 @@ export default function Home() {
 						<span className="text-sm text-center">교수</span>
 						<span className="text-sm text-center">강의실</span>
 						<span className="text-sm text-center">시간</span>
-						<span className="text-sm text-center">추가여부</span>
+						<span className="text-sm text-center">시간표 추가</span>
 				</div>
 				{
 					lectures.map(lecture => (
-						<Card className="grid grid-cols-12 w-full p-2" key={lecture.id}>
+						<Card className="grid grid-cols-11 w-full p-2" key={lecture.id}>
 							<span className="text-sm text-center">{lecture.campusName}</span>
-							<span className="text-sm text-center">{lecture.category}</span>
 							<span className="text-sm text-center">{lecture.credit}</span>
 							<span className="text-sm text-center">{lecture.grade}</span>
 							<span className="text-sm text-center">{lecture.group}</span>

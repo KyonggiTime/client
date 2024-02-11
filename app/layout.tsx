@@ -37,7 +37,7 @@ export default function RootLayout({
 				<HeaderBar />
 				<Providers themeProps={{ attribute: "class", defaultTheme: "light" }}>
 					<div className="relative flex flex-col h-screen">
-						<main className="container mx-auto max-w-7xl pt-8 px-6 flex-grow">
+						<main className="container mx-auto max-w-7xl pt-8 mb-10 px-6 flex-grow">
 							{children}
 						</main>
 						<Divider />
