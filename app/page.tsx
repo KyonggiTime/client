@@ -120,7 +120,8 @@ export default function Home() {
 								lecture={lecture}
 								onClick={() => onAddLectureButtonClicked(lecture)}
 								buttonText={timeTable.lectures.some(item => item.id == lecture.id) ? "제거" : "추가"}
-								key={lecture.id} />
+								key={lecture.id}
+								initMaximized={false} />
 							:
 								<Lecture
 								lecture={lecture}
@@ -188,7 +189,8 @@ export default function Home() {
 									lecture={lecture}
 									onClick={() => onAddLectureButtonClicked(lecture)}
 									buttonText={timeTable.lectures.some(item => item.id == lecture.id) ? "제거" : "추가"}
-									key={lecture.id} />
+									key={lecture.id}
+									initMaximized={true} />
 								:
 									<Lecture
 									lecture={lecture}
