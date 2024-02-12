@@ -3,16 +3,18 @@ import { Card } from "@nextui-org/card";
 import { Input } from "@nextui-org/input";
 import { Button } from "@nextui-org/button";
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@nextui-org/dropdown";
+import { Accordion, AccordionItem } from "@nextui-org/accordion";
 import { CAMPUS } from "@/config/campus";
 import { GRADE } from "@/config/grade";
 import { LectureApi } from "./api/lecture.api";
 import { useEffect, useState } from "react";
-import { hasDuplicates, splitTime, zeroFill } from "@/util/util";
+import { hasDuplicates, splitTime } from "@/util/util";
 import { Lecture } from "@/components/lecture.component";
 import { LargeLecture } from "@/components/large-lecture.component";
 
 export default function Home() {
 	const [lectures, setLectures] = useState<Record<string, string>[]>([]);
+	const [query, setQuery] = useState<string>("");
 	const [campus, setCampus] = useState<string>("");
 	const [grade, setGrade] = useState<string>("");
 	const [professor, setProfessor] = useState<string>("");
@@ -48,7 +50,7 @@ export default function Home() {
   }, []);
 
 	const onSearchButtonClicked = async () => {
-		const lecturesFromApi = await LectureApi.loadLectures({campusName: campus, grade, professor, name, major, group: timezone});
+		const lecturesFromApi = await LectureApi.loadLectures({campusName: campus, grade, professor, name, major, group: timezone, query});
 		setLectures(lecturesFromApi);
 	}
 
@@ -84,6 +86,12 @@ export default function Home() {
 			...newTimeTable,
 			lectures,
 		}));
+	}
+
+	const onKeyDown = (e) => {
+		if (e.key == 'Enter') {
+			onSearchButtonClicked();
+		}
 	}
 
 	return (
@@ -133,47 +141,52 @@ export default function Home() {
 			</Card>
 
 			<Card className="flex-col flex items-center justify-center mt-2 p-4 w-full">
-				<div className="flex flex-wrap content-center w-full">
-					<Dropdown>
-						<DropdownTrigger className="m-2">
-							<Button 
-								variant="bordered" 
-							>
-								{ campus + "캠퍼스" || "캠퍼스 선택" }
-							</Button>
-						</DropdownTrigger>
-						<DropdownMenu items={CAMPUS} selectionMode="single" onSelectionChange={keys => setCampus(Array.from(keys).join(", ").replaceAll("_", " "))}>
-							{(item: {key: string, label: string}) => (
-								<DropdownItem
-									key={item.key}
-								>
-									{item.label}
-								</DropdownItem>
-							)}
-						</DropdownMenu>
-					</Dropdown>
-					<Dropdown>
-						<DropdownTrigger className="m-2">
-							<Button 
-								variant="bordered" 
-							>
-								{ grade + "학년" || "학년 선택" }
-							</Button>
-						</DropdownTrigger>
-						<DropdownMenu items={GRADE} selectionMode="single" onSelectionChange={keys => setGrade(Array.from(keys).join(", ").replaceAll("_", " "))}>
-							{(item: {key: string, label: string}) => (
-								<DropdownItem
-									key={item.key}
-								>
-									{item.label}
-								</DropdownItem>
-							)}
-						</DropdownMenu>
-					</Dropdown>
-					<Input type="title" placeholder="과목명" className="m-2 w-30" variant="bordered" onChange={(e) => setName(e.target.value)}/>
-					<Input type="title" placeholder="교수명" className="m-2 w-30" variant="bordered" onChange={(e) => setProfessor(e.target.value)}/>
-					<Input type="title" placeholder="학과명" className="m-2 w-30" variant="bordered" onChange={(e) => setMajor(e.target.value)}/>
-					<Input type="title" placeholder="시간대구분명" className="m-2 w-30" variant="bordered" onChange={(e) => setTimezone(e.target.value)}/>
+				<div className="flex flex-wrap content-center w-full" onKeyDown={onKeyDown}>
+					<Input type="title" placeholder="검색어 입력 (강의명, 교수명 등)" className="m-2 w-full" variant="bordered" onChange={(e) => setQuery(e.target.value)}/>
+						<Accordion>
+							<AccordionItem aria-label="상세 조건" title="상세 조건">
+							<Dropdown>
+								<DropdownTrigger className="m-2">
+									<Button 
+										variant="bordered" 
+									>
+										{ campus + "캠퍼스" || "캠퍼스 선택" }
+									</Button>
+								</DropdownTrigger>
+								<DropdownMenu items={CAMPUS} selectionMode="single" onSelectionChange={keys => setCampus(Array.from(keys).join(", ").replaceAll("_", " "))}>
+									{(item: {key: string, label: string}) => (
+										<DropdownItem
+											key={item.key}
+										>
+											{item.label}
+										</DropdownItem>
+									)}
+								</DropdownMenu>
+							</Dropdown>
+							<Dropdown>
+								<DropdownTrigger className="m-2">
+									<Button 
+										variant="bordered" 
+									>
+										{ grade + "학년" || "학년 선택" }
+									</Button>
+								</DropdownTrigger>
+								<DropdownMenu items={GRADE} selectionMode="single" onSelectionChange={keys => setGrade(Array.from(keys).join(", ").replaceAll("_", " "))}>
+									{(item: {key: string, label: string}) => (
+										<DropdownItem
+											key={item.key}
+										>
+											{item.label}
+										</DropdownItem>
+									)}
+								</DropdownMenu>
+							</Dropdown>
+							<Input type="title" placeholder="과목명" className="m-2 w-30" variant="bordered" onChange={(e) => setName(e.target.value)}/>
+							<Input type="title" placeholder="교수명" className="m-2 w-30" variant="bordered" onChange={(e) => setProfessor(e.target.value)}/>
+							<Input type="title" placeholder="학과명" className="m-2 w-30" variant="bordered" onChange={(e) => setMajor(e.target.value)}/>
+							<Input type="title" placeholder="시간대구분명" className="m-2 w-30" variant="bordered" onChange={(e) => setTimezone(e.target.value)}/>
+						</AccordionItem>
+					</Accordion>
 				</div>
 				<Button variant="shadow" color="primary" className="m-2 w-full" onClick={onSearchButtonClicked}>
 					검색

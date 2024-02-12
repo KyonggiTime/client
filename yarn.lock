@@ -1225,6 +1225,27 @@
   resolved "https://registry.yarnpkg.com/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-13.4.9.tgz#0c2758164cccd61bc5a1c6cd8284fe66173e4a2b"
   integrity sha512-QbT03FXRNdpuL+e9pLnu+XajZdm/TtIXVYY4lA9t+9l0fLZbHXDYEKitAqxrOj37o3Vx5ufxiRAniaIebYDCgw==
 
+"@nextui-org/accordion@^2.0.28":
+  version "2.0.28"
+  resolved "https://registry.yarnpkg.com/@nextui-org/accordion/-/accordion-2.0.28.tgz#4d61d0534d4365a41a9ab0bc02b74bafc5069922"
+  integrity sha512-WzD7sscL+4K0TFyUutTn1AhU0wcS68TqNCTNv7KgON6ODdwieydilMxAyXvwo3RgXeWG+8BbdxJC/6W+/iLBTg==
+  dependencies:
+    "@nextui-org/aria-utils" "2.0.15"
+    "@nextui-org/divider" "2.0.25"
+    "@nextui-org/framer-transitions" "2.0.15"
+    "@nextui-org/react-utils" "2.0.10"
+    "@nextui-org/shared-icons" "2.0.6"
+    "@nextui-org/shared-utils" "2.0.4"
+    "@nextui-org/use-aria-accordion" "2.0.2"
+    "@nextui-org/use-aria-press" "2.0.1"
+    "@react-aria/button" "^3.8.4"
+    "@react-aria/focus" "^3.14.3"
+    "@react-aria/interactions" "^3.19.1"
+    "@react-aria/utils" "^3.21.1"
+    "@react-stately/tree" "^3.7.3"
+    "@react-types/accordion" "3.0.0-alpha.17"
+    "@react-types/shared" "^3.21.0"
+
 "@nextui-org/aria-utils@2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@nextui-org/aria-utils/-/aria-utils-2.0.0.tgz#19f59840e08eab48e729433b625e995da850275f"
@@ -1698,6 +1719,11 @@
   resolved "https://registry.yarnpkg.com/@nextui-org/shared-icons/-/shared-icons-2.0.3.tgz#7d0ac9ce21af2b3a2dd70651f7b362c237cfdde1"
   integrity sha512-2ODlzPWW+iYM7Uf7XDkz7GlJ+dzsFo6cBHH9hbbZEOx2v7/wB8x3VvrZcQ4SASewSb18a/wzxP8MJFnIUCOCrQ==
 
+"@nextui-org/shared-icons@2.0.6":
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/@nextui-org/shared-icons/-/shared-icons-2.0.6.tgz#e6ee3544f2a711eeb1c79116f495583e76994402"
+  integrity sha512-Mw5utPJAclFaeKAZowznEgabI5gdhXrW0iMaMA18Y4zcZRTidAc0WFeGYUlX876NxYLPc1Zk4bZUhQvMe+7uWg==
+
 "@nextui-org/shared-utils@2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@nextui-org/shared-utils/-/shared-utils-2.0.0.tgz#47853e3514e8eb924e62cd98f419db554170c685"
@@ -1930,6 +1956,19 @@
     "@react-stately/tooltip" "^3.4.2"
     "@react-types/overlays" "^3.8.0"
     "@react-types/tooltip" "^3.4.2"
+
+"@nextui-org/use-aria-accordion@2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@nextui-org/use-aria-accordion/-/use-aria-accordion-2.0.2.tgz#4f87a715c4e9864c8c8bfdf2d440915fd7963a6c"
+  integrity sha512-ebYr4CdvWifuTM/yyhQLKCa7aUqbVrWyR0SB6VNCGDID/kvRUW52puWnY9k24xdwY0cKbW3JRciKtQkrokRQwg==
+  dependencies:
+    "@react-aria/button" "^3.8.4"
+    "@react-aria/focus" "^3.14.3"
+    "@react-aria/selection" "^3.17.1"
+    "@react-aria/utils" "^3.21.1"
+    "@react-stately/tree" "^3.7.3"
+    "@react-types/accordion" "3.0.0-alpha.17"
+    "@react-types/shared" "^3.21.0"
 
 "@nextui-org/use-aria-button@2.0.0":
   version "2.0.0"
@@ -2307,7 +2346,7 @@
     "@react-types/shared" "^3.22.0"
     "@swc/helpers" "^0.5.0"
 
-"@react-aria/selection@^3.17.3":
+"@react-aria/selection@^3.17.1", "@react-aria/selection@^3.17.3":
   version "3.17.3"
   resolved "https://registry.yarnpkg.com/@react-aria/selection/-/selection-3.17.3.tgz#ed4b3c51cc9abc72ad19d6beb536b194db1cbd7d"
   integrity sha512-xl2sgeGH61ngQeE05WOWWPVpGRTPMjQEFmsAWEprArFi4Z7ihSZgpGX22l1w7uSmtXM/eN/v0W8hUYUju5iXlQ==
@@ -2564,6 +2603,13 @@
   integrity sha512-yPKFY1F88HxuZ15BG2qwAYxtpE4HnIU0Ofi4CuBE0xC6I8mwo4OQjDzi+DZjxQngM9D6AeTTD6F1V8gkozA0Gw==
   dependencies:
     "@swc/helpers" "^0.5.0"
+
+"@react-types/accordion@3.0.0-alpha.17":
+  version "3.0.0-alpha.17"
+  resolved "https://registry.yarnpkg.com/@react-types/accordion/-/accordion-3.0.0-alpha.17.tgz#fe37b9c4c94c5e0dcc10e95ade9d3b32f21abe1c"
+  integrity sha512-Wsp31bYRu9wy4zAAV2W8FLvVGFF3Vk/JKn2MxqhzaSHwHBw/dfgJTvRRUW+OmBgnqVN97ur893TP9A3odpoZEg==
+  dependencies:
+    "@react-types/shared" "^3.21.0"
 
 "@react-types/button@^3.7.3", "@react-types/button@^3.7.4":
   version "3.7.4"

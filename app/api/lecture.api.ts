@@ -11,11 +11,12 @@ export class LectureApi {
       group?: string,
       lectureNumber?: string,
       grade?: string,
+      query?: string,
     }
   ): Promise<Record<string, string>[]> {
     const query = new URLSearchParams(dto).toString().replace(/(?:\&|^)[^\&]*?\=(?=\&|$)/g, '');
     try {
-        const res = await fetch(`${Constants.serverAddress}/lecture?${query}`, {
+        const res = await fetch(`${Constants.serverAddress}/lecture/search?${query}`, {
             headers: {
                 'Content-Type': 'application/json',
             },
