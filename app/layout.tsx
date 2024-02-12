@@ -6,6 +6,12 @@ import { Divider } from "@nextui-org/divider";
 import { HeaderBar } from "@/components/header-bar.component";
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Noto_Sans_KR } from 'next/font/google';
+
+const notoSansKr = Noto_Sans_KR({
+  weight: ['500'],
+  subsets: ['latin'],
+});
 
 export const metadata: Metadata = {
 	title: {
@@ -52,7 +58,7 @@ export default function RootLayout({
 			</head>
 			<body
 				className={clsx(
-					"bg-gray-200 font-sans antialiased mi min-h-[1100vh]",
+					`bg-gray-200 font-sans antialiased mi min-h-[1100vh] ${notoSansKr.className}`,
 				)}
 			>
 				<HeaderBar />
@@ -63,9 +69,9 @@ export default function RootLayout({
 						</main>
 						<Divider />
 						<footer className="w-full flex items-center justify-start p-4">
-							<p className="text-[0.6rem]">
+							<p className="text-sm">
 								서비스명: 경기타임 : 경기대학교 강의 시간표 <br />
-								제작자: 방진혁<br />
+								제작자: 방진혁 (<a href="https://jinhy.uk">https://jinhy.uk</a>)<br />
 								깃허브: <a href="https://github.com/jinhyeokfang">https://github.com/jinhyeokfang</a> <br/>
 							</p>
 						</footer>
