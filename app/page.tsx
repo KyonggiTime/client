@@ -132,14 +132,14 @@ export default function Home() {
 				}
 			</Card>
 
-			<Card className="flex-col flex-wrap items-center justify-center mt-2 p-4 w-full">
-				<div className="flex flex-wrap items-center w-full">
+			<Card className="flex-col flex items-center justify-center mt-2 p-4 w-full">
+				<div className="flex flex-wrap content-center w-full">
 					<Dropdown>
-						<DropdownTrigger className="mr-2">
+						<DropdownTrigger className="m-2">
 							<Button 
 								variant="bordered" 
 							>
-								{ campus || "캠퍼스 선택" }
+								{ campus + "캠퍼스" || "캠퍼스 선택" }
 							</Button>
 						</DropdownTrigger>
 						<DropdownMenu items={CAMPUS} selectionMode="single" onSelectionChange={keys => setCampus(Array.from(keys).join(", ").replaceAll("_", " "))}>
@@ -157,7 +157,7 @@ export default function Home() {
 							<Button 
 								variant="bordered" 
 							>
-								{ grade || "학년 선택" }
+								{ grade + "학년" || "학년 선택" }
 							</Button>
 						</DropdownTrigger>
 						<DropdownMenu items={GRADE} selectionMode="single" onSelectionChange={keys => setGrade(Array.from(keys).join(", ").replaceAll("_", " "))}>
@@ -175,7 +175,7 @@ export default function Home() {
 					<Input type="title" placeholder="학과명" className="m-2 w-30" variant="bordered" onChange={(e) => setMajor(e.target.value)}/>
 					<Input type="title" placeholder="시간대구분명" className="m-2 w-30" variant="bordered" onChange={(e) => setTimezone(e.target.value)}/>
 				</div>
-				<Button variant="shadow" color="primary" className="w-full m-2" onClick={onSearchButtonClicked}>
+				<Button variant="shadow" color="primary" className="m-2 w-full" onClick={onSearchButtonClicked}>
 					검색
 				</Button>
 			</Card>
