@@ -96,28 +96,38 @@ export default function Home() {
 
 	return (
 		<>
-			<Card className="flex-col items-center justify-center p-4 w-full">
-				<h1 className="text-center">시간표</h1>
-				<div className="border-blue-300 border w-full">
-					<div className="grid grid-cols-5 text-center">
-							<span className="text-sm text-center p-2 border-blue-300 border">월</span>
-							<span className="text-sm text-center p-2 border-blue-300 border">화</span>
-							<span className="text-sm text-center p-2 border-blue-300 border">수</span>
-							<span className="text-sm text-center p-2 border-blue-300 border">목</span>
-							<span className="text-sm text-center p-2 border-blue-300 border">금</span>
-					</div>
-					{
-						[1,2,3,4,5,6,7,8,9,10].map((item) => (
-							<div className="grid grid-cols-5 text-center" key={item}>
-									<div className="text-sm sm:text-md text-center sm:p-2 border-blue-300 border">{ timeTable['월'].some(time => time.time == item) ? timeTable['월'].find(time => time.time == item).lecture.name : '-' }</div>
-									<div className="text-sm sm:text-md text-center sm:p-2 border-blue-300 border">{ timeTable['화'].some(time => time.time == item) ? timeTable['화'].find(time => time.time == item).lecture.name : '-' }</div>
-									<div className="text-sm sm:text-md text-center sm:p-2 border-blue-300 border">{ timeTable['수'].some(time => time.time == item) ? timeTable['수'].find(time => time.time == item).lecture.name : '-' }</div>
-									<div className="text-sm sm:text-md text-center sm:p-2 border-blue-300 border">{ timeTable['목'].some(time => time.time == item) ? timeTable['목'].find(time => time.time == item).lecture.name : '-' }</div>
-									<div className="text-sm sm:text-md text-center sm:p-2 border-blue-300 border">{ timeTable['금'].some(time => time.time == item) ? timeTable['금'].find(time => time.time == item).lecture.name : '-' }</div>
-							</div>
-						))
-					}
+		<Card className="flex-col items-center justify-center p-4 w-full">
+			<h1 className="text-center">시간표</h1>
+			<div className="border-blue-300 border w-full">
+				<div className="grid grid-cols-5 text-center">
+						<span className="text-sm text-center p-2 border-blue-300 border">월</span>
+						<span className="text-sm text-center p-2 border-blue-300 border">화</span>
+						<span className="text-sm text-center p-2 border-blue-300 border">수</span>
+						<span className="text-sm text-center p-2 border-blue-300 border">목</span>
+						<span className="text-sm text-center p-2 border-blue-300 border">금</span>
 				</div>
+				{
+					[1,2,3,4,5,6,7,8,9,10].map((item) => (
+						<div className="grid grid-cols-5 text-center" key={item}>
+								<div className="text-sm text-center sm:p-2 border-blue-300 border">{ timeTable['월'].some(time => time.time == item) ? timeTable['월'].find(time => time.time == item).lecture.name : '-' }</div>
+								<div className="text-sm text-center sm:p-2 border-blue-300 border">{ timeTable['화'].some(time => time.time == item) ? timeTable['화'].find(time => time.time == item).lecture.name : '-' }</div>
+								<div className="text-sm text-center sm:p-2 border-blue-300 border">{ timeTable['수'].some(time => time.time == item) ? timeTable['수'].find(time => time.time == item).lecture.name : '-' }</div>
+								<div className="text-sm text-center sm:p-2 border-blue-300 border">{ timeTable['목'].some(time => time.time == item) ? timeTable['목'].find(time => time.time == item).lecture.name : '-' }</div>
+								<div className="text-sm text-center sm:p-2 border-blue-300 border">{ timeTable['금'].some(time => time.time == item) ? timeTable['금'].find(time => time.time == item).lecture.name : '-' }</div>
+						</div>
+					))
+				}
+			</div>
+		</Card>
+			<Card className="flex-col items-center justify-center p-4 mt-2 w-full">
+				<h1 className="text-center">시간표에 배치되지 않은 강의</h1>
+					{
+						timeTable.lectures
+							.filter(lecture => lecture.time == "")
+							.map(lecture => (
+									<h2 className="text-sm">{lecture.name}</h2>
+							))	
+					}
 			</Card>
 			<Card className="flex-col items-center justify-center p-4 mt-2 gap-4 w-full">
 				<h1 className="text-center">추가한 강의 목록</h1>
