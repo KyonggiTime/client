@@ -204,7 +204,6 @@ export default function Home() {
 			</Card>
 			<Card className="flex-col items-center justify-center p-4 mt-2 gap-4 w-full">
 				<h2 className="text-red-500">주의: 잘못 기입된 강의가 존재할 수 있습니다. 시간표를 다 만드시고 나서 꼭 수강신청 사이트에서 확인해주세요!!</h2>
-				<h2>에브리타임 운영 정책에 의해 글이 강제 삭제되어 쪽지 사용이 어렵습니다. 버그나 문의 사항이 있으시다면 이메일 (hyeki0206@naver.com)으로 연락부탁드립니다!</h2>
 				{
 						lectures.map(lecture => (
 								width <= 800 ? 
