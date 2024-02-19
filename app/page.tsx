@@ -50,7 +50,7 @@ export default function Home() {
   }, []);
 
 	const onSearchButtonClicked = async () => {
-		const lecturesFromApi = await LectureApi.loadLectures({campusName: campus, grade, professor, name, major, group: timezone, query});
+		const lecturesFromApi = await LectureApi.loadLectures({campusName: campus, grade, professor, name, major, group: timezone, query: query.replaceAll(' ', '')});
 		setLectures(lecturesFromApi);
 	}
 
