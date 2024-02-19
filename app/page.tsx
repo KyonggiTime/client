@@ -130,9 +130,8 @@ export default function Home() {
 					}
 			</Card>
 		<Card className="flex-col items-center justify-center p-4 mt-2 mb-2 w-full">
-			<h1 className="text-center">경기타임을 이용하시는 분을 대상으로 설문을 진행하고 있습니다!</h1>
-			<h1 className="text-center">설문 주소: <a href="https://sleigh.college/">https://sleigh.college</a> (회원가입 / 로그인 필요)</h1>
-			<h1 className="text-center">추첨을 통해 스타벅스 기프티콘을 드리고 있으니 많은 참여 부탁드립니다!</h1>
+			<h1 className="text-center">경기타임 개발자 감사인사 및 버그 제보 글</h1>
+			<h1 className="text-center">주소: <a href="https://everytime.kr/385881/v/331188454">https://everytime.kr/385881/v/331188454</a></h1>
 		</Card>
 			<Card className="flex-col items-center justify-center p-4 mt-2 gap-4 w-full">
 				<h1 className="text-center">추가한 강의 목록</h1>
