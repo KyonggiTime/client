@@ -97,7 +97,7 @@ export default function Home() {
 	return (
 		<>
 		<Card className="flex-col items-center justify-center p-4 w-full">
-			<h1 className="text-center">시간표</h1>
+			<h1 className="text-center text-xl font-bold mb-2">시간표</h1>
 			<div className="w-full max-w-[1000px]">
 				<div className="grid grid-cols-5 text-center">
 						<span className="text-sm text-center p-2 bg-[#0070F0] text-white border shadow-xl rounded-xl">월</span>
@@ -120,7 +120,7 @@ export default function Home() {
 			</div>
 		</Card>
 			<Card className="flex-col items-center justify-center p-4 mt-2 w-full">
-				<h1 className="text-center">시간표에 배치되지 않은 강의</h1>
+				<h1 className="text-center text-md font-bold">시간표에 배치되지 않은 강의</h1>
 					{
 						timeTable.lectures
 							.filter(lecture => lecture.time == "")
@@ -130,11 +130,11 @@ export default function Home() {
 					}
 			</Card>
 		<Card className="flex-col items-center justify-center p-4 mt-2 mb-2 w-full">
-			<h1 className="text-center">경기타임 개발자 감사인사 및 버그 제보 글</h1>
-			<h1 className="text-center">주소: <a href="https://everytime.kr/385881/v/331188454">https://everytime.kr/385881/v/331188454</a></h1>
+			<h1 className="text-center">경기타임 개발자 감사 인사 및 버그 제보 글</h1>
+			<h1 className="text-center"><a className="text-blue-600 underline" href="https://everytime.kr/385881/v/331188454">글로 이동하기</a></h1>
 		</Card>
 			<Card className="flex-col items-center justify-center p-4 mt-2 gap-4 w-full">
-				<h1 className="text-center">추가한 강의 목록</h1>
+				<h1 className="text-center text-md font-bold">추가한 강의</h1>
 				{
 					timeTable.lectures.map(lecture => (
 							width <= 800 ? 
@@ -155,6 +155,7 @@ export default function Home() {
 			</Card>
 
 			<Card className="flex-col flex items-center justify-center mt-2 p-4 w-full">
+				<h1 className="text-center text-md font-bold">강의 검색 및 추가</h1>
 				<div className="flex flex-wrap content-center w-full" onKeyDown={onKeyDown}>
 					<Input type="title" placeholder="검색어 입력 (강의명, 교수명 등)" className="m-2 w-full" variant="bordered" onChange={(e) => setQuery(e.target.value)}/>
 						<Accordion>
@@ -207,7 +208,8 @@ export default function Home() {
 				</Button>
 			</Card>
 			<Card className="flex-col items-center justify-center p-4 mt-2 gap-4 w-full">
-				<h2 className="text-red-500">주의: 잘못 기입된 강의가 존재할 수 있습니다. 시간표를 다 만드시고 나서 꼭 수강신청 사이트에서 확인해주세요!!</h2>
+				<h1 className="text-red-500 text-md font-bold">주의</h1>
+				<h2 className="text-red-500">잘못 기입된 강의가 존재할 수 있습니다. 시간표를 다 만드시고 나서 꼭 수강신청 사이트에서 확인해주세요!!</h2>
 				{
 						lectures.map(lecture => (
 								width <= 800 ? 
