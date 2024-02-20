@@ -96,36 +96,36 @@ export default function Home() {
 
 	return (
 		<>
-		<Card className="flex-col items-center justify-center p-4 w-full">
 			<h1 className="text-center text-xl font-bold mb-2">시간표</h1>
-			<div className="w-full max-w-[1000px]">
-				<div className="grid grid-cols-5 text-center">
-						<span className="text-sm text-center p-2 bg-[#0070F0] text-white border shadow-xl rounded-xl">월</span>
-						<span className="text-sm text-center p-2 bg-[#0070F0] text-white border shadow-xl rounded-xl">화</span>
-						<span className="text-sm text-center p-2 bg-[#0070F0] text-white border shadow-xl rounded-xl">수</span>
-						<span className="text-sm text-center p-2 bg-[#0070F0] text-white border shadow-xl rounded-xl">목</span>
-						<span className="text-sm text-center p-2 bg-[#0070F0] text-white border shadow-xl rounded-xl">금</span>
+			<div className="m-auto max-w-[1000px]">
+				<div className="w-full">
+					<div className="grid grid-cols-5 text-center">
+							<span className="text-sm text-center p-2 bg-[#0070F0] text-white border shadow-xl rounded-xl">월</span>
+							<span className="text-sm text-center p-2 bg-[#0070F0] text-white border shadow-xl rounded-xl">화</span>
+							<span className="text-sm text-center p-2 bg-[#0070F0] text-white border shadow-xl rounded-xl">수</span>
+							<span className="text-sm text-center p-2 bg-[#0070F0] text-white border shadow-xl rounded-xl">목</span>
+							<span className="text-sm text-center p-2 bg-[#0070F0] text-white border shadow-xl rounded-xl">금</span>
+					</div>
+					{
+						[1,2,3,4,5,6,7,8,9,10].map((item) => (
+							<div className="grid grid-cols-5 text-center" key={item}>
+									{ timeTable['월'].some(time => time.time == item) ? (<div className="text-sm text-center p-1 sm:p-2 bg-[#90B8E7] text-white border border-gray-300 shadow-2xl rounded-xl">{timeTable['월'].find(time => time.time == item).lecture.name}</div>) : (<div className="text-sm text-center p-2 bg-gray-100 border border-gray-300 shadow-2xl rounded-xl"></div>) }
+									{ timeTable['화'].some(time => time.time == item) ? (<div className="text-sm text-center p-1 sm:p-2 bg-[#90B8E7] text-white border border-gray-300 shadow-2xl rounded-xl">{timeTable['화'].find(time => time.time == item).lecture.name}</div>) : (<div className="text-sm text-center p-2 bg-gray-100 border border-gray-300 shadow-2xl rounded-xl"></div>) }
+									{ timeTable['수'].some(time => time.time == item) ? (<div className="text-sm text-center p-1 sm:p-2 bg-[#90B8E7] text-white border border-gray-300 shadow-2xl rounded-xl">{timeTable['수'].find(time => time.time == item).lecture.name}</div>) : (<div className="text-sm text-center p-2 bg-gray-100 border border-gray-300 shadow-2xl rounded-xl"></div>) }
+									{ timeTable['목'].some(time => time.time == item) ? (<div className="text-sm text-center p-1 sm:p-2 bg-[#90B8E7] text-white border border-gray-300 shadow-2xl rounded-xl">{timeTable['목'].find(time => time.time == item).lecture.name}</div>) : (<div className="text-sm text-center p-2 bg-gray-100 border border-gray-300 shadow-2xl rounded-xl"></div>) }
+									{ timeTable['금'].some(time => time.time == item) ? (<div className="text-sm text-center p-1 sm:p-2 bg-[#90B8E7] text-white border border-gray-300 shadow-2xl rounded-xl">{timeTable['금'].find(time => time.time == item).lecture.name}</div>) : (<div className="text-sm text-center p-2 bg-gray-100 border border-gray-300 shadow-2xl rounded-xl"></div>) }
+							</div>
+						))
+					}
 				</div>
-				{
-					[1,2,3,4,5,6,7,8,9,10].map((item) => (
-						<div className="grid grid-cols-5 text-center" key={item}>
-								{ timeTable['월'].some(time => time.time == item) ? (<div className="text-sm text-center p-1 sm:p-2 bg-[#90B8E7] text-white border border-gray-300 shadow-2xl rounded-xl">{timeTable['월'].find(time => time.time == item).lecture.name}</div>) : (<div className="text-sm text-center p-2 bg-gray-100 border border-gray-300 shadow-2xl rounded-xl"></div>) }
-								{ timeTable['화'].some(time => time.time == item) ? (<div className="text-sm text-center p-1 sm:p-2 bg-[#90B8E7] text-white border border-gray-300 shadow-2xl rounded-xl">{timeTable['화'].find(time => time.time == item).lecture.name}</div>) : (<div className="text-sm text-center p-2 bg-gray-100 border border-gray-300 shadow-2xl rounded-xl"></div>) }
-								{ timeTable['수'].some(time => time.time == item) ? (<div className="text-sm text-center p-1 sm:p-2 bg-[#90B8E7] text-white border border-gray-300 shadow-2xl rounded-xl">{timeTable['수'].find(time => time.time == item).lecture.name}</div>) : (<div className="text-sm text-center p-2 bg-gray-100 border border-gray-300 shadow-2xl rounded-xl"></div>) }
-								{ timeTable['목'].some(time => time.time == item) ? (<div className="text-sm text-center p-1 sm:p-2 bg-[#90B8E7] text-white border border-gray-300 shadow-2xl rounded-xl">{timeTable['목'].find(time => time.time == item).lecture.name}</div>) : (<div className="text-sm text-center p-2 bg-gray-100 border border-gray-300 shadow-2xl rounded-xl"></div>) }
-								{ timeTable['금'].some(time => time.time == item) ? (<div className="text-sm text-center p-1 sm:p-2 bg-[#90B8E7] text-white border border-gray-300 shadow-2xl rounded-xl">{timeTable['금'].find(time => time.time == item).lecture.name}</div>) : (<div className="text-sm text-center p-2 bg-gray-100 border border-gray-300 shadow-2xl rounded-xl"></div>) }
-						</div>
-					))
-				}
 			</div>
-		</Card>
 			<Card className="flex-col items-center justify-center p-4 mt-2 w-full">
 				<h1 className="text-center text-md font-bold">시간표에 배치되지 않은 강의</h1>
 					{
 						timeTable.lectures
 							.filter(lecture => lecture.time == "")
 							.map(lecture => (
-									<h2 className="text-sm">{lecture.name}</h2>
+									<h2 className="text-sm" key={lecture.id}>{lecture.name}</h2>
 							))	
 					}
 			</Card>
@@ -222,25 +222,6 @@ export default function Home() {
 						))
 				}
 			</Card>
-		<Card className="flex-col items-center justify-center p-4 mt-2 mb-2 w-full">
-			<h1 className="text-red-500 text-md font-bold">주의</h1>
-			<h2 className="text-red-500">잘못 기입된 강의가 존재할 수 있습니다. 시간표를 다 만드시고 나서 꼭 수강신청 사이트에서 확인해주세요!!</h2>
-
-			<h1 className="text-center font-bold">공지사항</h1>
-			<h1 className="text-center">경기타임 개발자 감사 인사 및 버그 제보 글</h1>
-			<h1 className="text-center"><a className="text-blue-600 underline" href="https://everytime.kr/385881/v/331188454">글로 이동하기</a></h1>
-			<h1 className="text-center font-bold">20일 2시 서버 오류 관련 사과말씀</h1>
-			<h1 className="text-center">2월 20일 오후 2시부터 15분동안 서버에 문제가 생겨 검색 기능이 사용 불가했습니다. (무중단 배포 관련 오류) 서버 오류는 현재 수정된 상태로 정상적으로 이용 가능합니다. 불편을 끼쳐 대단히 죄송합니다.</h1>
-			<h1 className="text-center font-bold">업데이트 내역</h1>
-			<h1 className="text-center">텍스트 가독성 개성</h1>
-			<h1 className="text-center">띄어쓰기 시 강의가 검색되지 않는 오류 수정</h1>
-			<h1 className="text-center">학년 조건 입력 시 나머지 조건이 무시되는 오류 수정</h1>
-			<h1 className="text-center">API 서버 배포과정 수정 (hotfix)</h1>
-			<h1 className="text-center font-bold">업데이트 예정</h1>
-			<h1 className="text-center">공지사항 페이지 추가</h1>
-			<h1 className="text-center">학점계산기 페이지 추가</h1>
-			<h1 className="text-center">문의 페이지 추가</h1>
-		</Card>
 		</>
 	);
 }

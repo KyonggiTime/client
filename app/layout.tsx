@@ -58,7 +58,7 @@ export default function RootLayout({
 			</head>
 			<body
 				className={clsx(
-					`bg-gray-200 font-sans antialiased mi min-h-[1100vh] ${notoSansKr.className}`,
+					`bg-gray-100 antialiased ${notoSansKr.className}`,
 				)}
 			>
 				<HeaderBar />
