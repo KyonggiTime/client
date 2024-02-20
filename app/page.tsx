@@ -102,7 +102,7 @@ export default function Home() {
 	}
 
 	const onAddLectureSelfButtonClicked = async () => {
-		if (name == "") {
+		if (nameInSelfForm == "") {
 			alert("강의명을 입력해주세요.");
 			return;
 		}
