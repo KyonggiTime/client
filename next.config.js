@@ -16,7 +16,7 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  generateBuildId: nextBuildId({ dir: __dirname }),
+  generateBuildId: () => nextBuildId({ dir: __dirname }),
 }
 
 module.exports = withPWA(nextConfig);
