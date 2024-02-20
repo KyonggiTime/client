@@ -21,6 +21,7 @@ export default function Home() {
 	const [name, setName] = useState<string>("");
 	const [timezone, setTimezone] = useState<string>("");
 	const [major, setMajor] = useState<string>("");
+	const [lectureNumber, setLectureNumber] = useState<string>("");
 	const [width, setWidth] = useState<number>(1000);
 
 	const handleWindowSizeChange = () => {
@@ -50,7 +51,7 @@ export default function Home() {
   }, []);
 
 	const onSearchButtonClicked = async () => {
-		const lecturesFromApi = await LectureApi.loadLectures({campusName: campus, grade, professor, name, major, group: timezone, query: query.replaceAll(' ', '')});
+		const lecturesFromApi = await LectureApi.loadLectures({campusName: campus, grade, professor, name, major, group: timezone, query: query.replaceAll(' ', ''), lectureNumber});
 		setLectures(lecturesFromApi);
 	}
 
@@ -200,6 +201,7 @@ export default function Home() {
 							<Input type="title" placeholder="교수명" className="m-2 w-30" variant="bordered" onChange={(e) => setProfessor(e.target.value)}/>
 							<Input type="title" placeholder="학과명" className="m-2 w-30" variant="bordered" onChange={(e) => setMajor(e.target.value)}/>
 							<Input type="title" placeholder="시간대구분명" className="m-2 w-30" variant="bordered" onChange={(e) => setTimezone(e.target.value)}/>
+							<Input type="title" placeholder="강의번호" className="m-2 w-30" variant="bordered" onChange={(e) => setLectureNumber(e.target.value)}/>
 						</AccordionItem>
 					</Accordion>
 				</div>
