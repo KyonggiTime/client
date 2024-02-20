@@ -15,7 +15,7 @@ export const HeaderNavigation = () => {
             공지사항
         </Link>
         <Link className="font-bold text-sm" color="foreground" href="/help">
-            문의
+            버그 제보 및 문의
         </Link>
       </>
     );
