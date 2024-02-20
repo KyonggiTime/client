@@ -30,6 +30,7 @@ export default function Notice() {
 			<h1 className="text-center">공지사항 페이지 추가</h1>
 			<h1 className="text-center">학점계산기 페이지 추가</h1>
 			<h1 className="text-center">문의 페이지 추가</h1>
+			<h1 className="text-center">학년 미입력시 전공 과목이 뜨지 않는 오류 수정 (hotfix)</h1>
 		</Card>
 		<Card className="flex-col items-center justify-center p-4 mt-2 mb-2 w-full">
 			<h1 className="text-center font-bold">업데이트 예정</h1>
