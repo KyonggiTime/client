@@ -18,7 +18,7 @@ export default function Help() {
 		<>
 			<Card className="flex-col items-center justify-center p-4 mt-2 mb-2 w-full">
 				<Input type="title" placeholder="제목" className="m-2 w-full" variant="bordered" onChange={(e) => setTitle(e.target.value)}/>
-				<Textarea placeholder="내용" className="m-2 w-full" variant="bordered" onChange={(e) => setDescription(e.target.value)}/>
+				<Textarea placeholder="내용 (회신을 원하시는 경우 회신받을 이메일도 입력해주세요.)" className="m-2 w-full" variant="bordered" onChange={(e) => setDescription(e.target.value)}/>
 				<Button variant="shadow" color="primary" className="m-2 w-full" onClick={onAddButtonClicked}>
 					문의 전송
 				</Button>
