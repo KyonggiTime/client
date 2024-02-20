@@ -119,13 +119,19 @@ export default function Home() {
 					}
 				</div>
 			</div>
-			<h1 className="text-center text-sm mt-2 font-bold">시간표에 배치되지 않은 강의</h1>
 				{
-					timeTable.lectures
-						.filter(lecture => lecture.time == "")
-						.map(lecture => (
-								<h2 className="text-xs text-center" key={lecture.id}>{lecture.name}</h2>
-						))	
+					timeTable.lectures.filter(lecture => lecture.time == "").length > 0 &&
+					(
+						<>
+							<h1 className="text-center text-sm mt-2 font-bold">시간표에 배치되지 않은 강의</h1>
+							{
+								timeTable.lectures.filter(lecture => lecture.time == "")
+									.map(lecture => (
+											<h2 className="text-xs text-center" key={lecture.id}>{lecture.name}</h2>
+									))
+							}
+						</>
+					)
 				}
 			<Card className="flex-col items-center justify-center p-4 mt-2 gap-4 w-full">
 				<h1 className="text-center text-md font-bold">추가한 강의</h1>
