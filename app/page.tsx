@@ -24,6 +24,18 @@ export default function Home() {
 	const [lectureNumber, setLectureNumber] = useState<string>("");
 	const [width, setWidth] = useState<number>(1000);
 
+	const [campusInSelfForm, setCampusInSelfForm] = useState<string>("");
+	const [gradeInSelfForm, setGradeInSelfForm] = useState<string>("");
+	const [professorInSelfForm, setProfessorInSelfForm] = useState<string>("");
+	const [nameInSelfForm, setNameInSelfForm] = useState<string>("");
+	const [categoryInSelfForm, setCategoryInSelfForm] = useState<string>("");
+	const [majorInSelfForm, setMajorInSelfForm] = useState<string>("");
+	const [lectureNumberInSelfForm, setLectureNumberInSelfForm] = useState<string>("");
+	const [creditInSelfForm, setCreditInSelfForm] = useState<string>("");
+	const [groupInSelfForm, setGroupInSelfForm] = useState<string>("");
+	const [roomInSelfForm, setRoomInSelfForm] = useState<string>("");
+	const [timeInSelfForm, setTimeInSelfForm] = useState<string>("");
+
 	const handleWindowSizeChange = () => {
 			setWidth(window.innerWidth);
 	}
@@ -89,9 +101,69 @@ export default function Home() {
 		}));
 	}
 
+	const onAddLectureSelfButtonClicked = async () => {
+		if (name == "") {
+			alert("강의명을 입력해주세요.");
+			return;
+		}
+		const lecture ={
+			id: new Date().getTime(),
+			professor: professorInSelfForm,
+			name: nameInSelfForm,
+			campusName: campusInSelfForm,
+			lectureNumber: lectureNumberInSelfForm,
+			grade: gradeInSelfForm,
+			room: roomInSelfForm,
+			time: timeInSelfForm,
+			year: 2024,
+			semester: 1,
+			credit: creditInSelfForm,
+			category: categoryInSelfForm,
+			group: groupInSelfForm,
+			major: majorInSelfForm
+	}
+		let lectures;
+		if (timeTable.lectures.some(item => item.id == lecture.id)) {
+			lectures = timeTable.lectures.filter(item => item.id != lecture.id);
+		} else {
+			lectures = timeTable.lectures.concat(lecture);
+		}
+		const newTimeTable: Record<string, string[]> = {
+			'월': [],
+			'화': [],
+			'수': [],
+			'목': [],
+			'금': [],
+		};
+		for (const item of lectures) {
+			const newData = splitTime(item.time);
+			for (const day in newData) {
+					newTimeTable[day] = newTimeTable[day].concat(newData[day].map(time => ({time, lecture: item}) ) );
+					if (hasDuplicates(newTimeTable[day].map(item => item.time))) {
+						alert("시간이 겹치는 강의가 존재합니다.");
+						return;
+					}
+			}
+		}
+		setTimeTable({
+			...newTimeTable,
+			lectures,
+		});
+		localStorage.setItem('timeTable', JSON.stringify({
+			...newTimeTable,
+			lectures,
+		}));
+	}
+
 	const onKeyDown = (e) => {
 		if (e.key == 'Enter') {
 			onSearchButtonClicked();
+		}
+	}
+
+	const onKeyDownInSelfForm = (e) => {
+		if (e.key == 'Enter') {
+			onAddLectureSelfButtonClicked();
 		}
 	}
 
@@ -154,7 +226,6 @@ export default function Home() {
 					))
 				}
 			</Card>
-
 			<Card className="flex-col flex items-center justify-center mt-2 p-4 w-full">
 				<h1 className="text-center text-md font-bold">강의 검색 및 추가</h1>
 				<div className="flex flex-wrap content-center w-full" onKeyDown={onKeyDown}>
@@ -201,7 +272,7 @@ export default function Home() {
 							<Input type="title" placeholder="교수명" className="m-2 w-30" variant="bordered" onChange={(e) => setProfessor(e.target.value)}/>
 							<Input type="title" placeholder="학과명" className="m-2 w-30" variant="bordered" onChange={(e) => setMajor(e.target.value)}/>
 							<Input type="title" placeholder="시간대구분명" className="m-2 w-30" variant="bordered" onChange={(e) => setTimezone(e.target.value)}/>
-							<Input type="title" placeholder="강의번호" className="m-2 w-30" variant="bordered" onChange={(e) => setLectureNumber(e.target.value)}/>
+							<Input type="number" placeholder="강의번호" className="m-2 w-30" variant="bordered" onChange={(e) => setLectureNumber(e.target.value)}/>
 						</AccordionItem>
 					</Accordion>
 				</div>
@@ -227,6 +298,61 @@ export default function Home() {
 									key={lecture.id} />
 						))
 				}
+			</Card>
+			<Card className="flex-col flex items-center justify-center mt-20 p-4 w-full">
+				<div className="flex flex-wrap content-center w-full" onKeyDown={onKeyDownInSelfForm}>
+						<Accordion>
+							<AccordionItem aria-label="강의 직접 입력해서 추가" title="강의 직접 입력해서 추가">
+							<Dropdown>
+								<DropdownTrigger className="m-2">
+									<Button 
+										variant="bordered" 
+									>
+										{ campusInSelfForm + "캠퍼스" || "캠퍼스 선택" }
+									</Button>
+								</DropdownTrigger>
+								<DropdownMenu items={CAMPUS} selectionMode="single" onSelectionChange={keys => setCampusInSelfForm(Array.from(keys).join(", ").replaceAll("_", " "))}>
+									{(item: {key: string, label: string}) => (
+										<DropdownItem
+											key={item.key}
+										>
+											{item.label}
+										</DropdownItem>
+									)}
+								</DropdownMenu>
+							</Dropdown>
+							<Dropdown>
+								<DropdownTrigger className="m-2">
+									<Button 
+										variant="bordered" 
+									>
+										{ gradeInSelfForm + "학년" || "학년 선택" }
+									</Button>
+								</DropdownTrigger>
+								<DropdownMenu items={GRADE} selectionMode="single" onSelectionChange={keys => setGradeInSelfForm(Array.from(keys).join(", ").replaceAll("_", " "))}>
+									{(item: {key: string, label: string}) => (
+										<DropdownItem
+											key={item.key}
+										>
+											{item.label}
+										</DropdownItem>
+									)}
+								</DropdownMenu>
+							</Dropdown>
+							<Input type="title" placeholder="강의명" className="m-2 w-30 w-30" variant="bordered" onChange={(e) => setNameInSelfForm(e.target.value)}/>
+							<Input type="title" placeholder="시간대 ex) 금 1 2 3" className="m-2 w-30" variant="bordered" onChange={(e) => setTimeInSelfForm(e.target.value)}/>
+							<Input type="title" placeholder="교수명" className="m-2 w-30" variant="bordered" onChange={(e) => setProfessorInSelfForm(e.target.value)}/>
+							<Input type="title" placeholder="학과명" className="m-2 w-30" variant="bordered" onChange={(e) => setMajorInSelfForm(e.target.value)}/>
+							<Input type="number" placeholder="학점" className="m-2 w-30" variant="bordered" onChange={(e) => setCreditInSelfForm(e.target.value)}/>
+							<Input type="title" placeholder="강의실명" className="m-2 w-30" variant="bordered" onChange={(e) => setRoomInSelfForm(e.target.value)}/>
+							<Input type="title" placeholder="시간대구분명" className="m-2 w-30" variant="bordered" onChange={(e) => setGroupInSelfForm(e.target.value)}/>
+							<Input type="number" placeholder="강의번호" className="m-2 w-30" variant="bordered" onChange={(e) => setLectureNumberInSelfForm(e.target.value)}/>
+							<Button variant="shadow" color="primary" className="m-2 w-30" onClick={onAddLectureSelfButtonClicked}>
+								직접 입력한 강의 추가
+							</Button>
+						</AccordionItem>
+					</Accordion>
+				</div>
 			</Card>
 		</>
 	);
