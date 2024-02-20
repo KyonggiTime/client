@@ -1,12 +1,11 @@
 /** @type {import('next').NextConfig} */
+const runtimeCaching = require('next-pwa/cache');
 const nextBuildId = require('next-build-id');
 const withPWA = require("next-pwa")({
   dest: 'public',
   cacheOnFrontEndNav: true,
   reloadOnOnline: true,
-  fallbacks: {
-    document: "/",
-  },
+  runtimeCaching,
 });
 
 const nextConfig = {
