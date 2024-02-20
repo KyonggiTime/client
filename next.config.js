@@ -1,6 +1,11 @@
 /** @type {import('next').NextConfig} */
 const withPWA = require("next-pwa")({
-  dest: 'public'
+  dest: 'public',
+  cacheOnFrontEndNav: true,
+  reloadOnOnline: true,
+  fallbacks: {
+    document: "/",
+  },
 });
 
 const nextConfig = {
@@ -9,6 +14,9 @@ const nextConfig = {
   },
   typescript: {
     ignoreBuildErrors: true,
+  },
+  generateBuildId: async () => {
+    return process.env.GIT_HASH
   },
 }
 
