@@ -1,4 +1,5 @@
 /** @type {import('next').NextConfig} */
+const nextBuildId = require('next-build-id');
 const withPWA = require("next-pwa")({
   dest: 'public',
   cacheOnFrontEndNav: true,
@@ -15,9 +16,7 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  generateBuildId: async () => {
-    return process.env.GIT_HASH
-  },
+  generateBuildId: nextBuildId({ dir: __dirname }),
 }
 
 module.exports = withPWA(nextConfig);
