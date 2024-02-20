@@ -299,6 +299,10 @@ export default function Home() {
 						))
 				}
 			</Card>
+			<Card className="flex-col items-center justify-center p-4 mt-2 mb-2 w-full">
+				<h1 className="text-center font-bold">학점계산기, 공지사항, 문의 기능 추가 안내</h1>
+				<h1 className="text-center">메뉴(우측 상단)를 통해 이동해 사용하실 수 있습니다!</h1>
+			</Card>
 			<Card className="flex-col flex items-center justify-center mt-20 p-4 w-full">
 				<div className="flex flex-wrap content-center w-full" onKeyDown={onKeyDownInSelfForm}>
 						<Accordion>
