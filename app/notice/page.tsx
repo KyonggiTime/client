@@ -11,7 +11,7 @@ export default function Notice() {
 		</Card>
 		<Card className="flex-col items-center justify-center p-4 mt-2 mb-2 w-full">
 			<h1 className="text-center font-bold">업데이트 예정</h1>
-			<h1 className="text-center">구글 계정과 시간표 / 학점계산기 동기화</h1>
+			<h1 className="text-center">구글 계정과 시간표 / 학점계산기 동기화 (현재 작업중)</h1>
 		</Card>
 		<Card className="flex-col items-center justify-center p-4 mt-2 mb-2 w-full">
 			<h1 className="text-center font-bold">안녕하세요 경기타임 개발자입니다.</h1>
@@ -42,6 +42,7 @@ export default function Notice() {
 			<h1 className="text-center">학점계산기 페이지 추가</h1>
 			<h1 className="text-center">문의 페이지 추가</h1>
 			<h1 className="text-center">학년 미입력시 전공 과목이 뜨지 않는 오류 수정 (hotfix)</h1>
+			<h1 className="text-center">4.5L 등 90분 수업이 입력되지 않는 오류 수정</h1>
 		</Card>
 		</>
 	);
