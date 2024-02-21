@@ -21,8 +21,7 @@ export class AccountApi {
         credentials: 'include',
       });
       const body = await res.json();
-      console.log(body);
-      return body.data;
+      return body.accessToken;
     } catch (error) {
       console.error(error);
       throw error;
@@ -41,7 +40,7 @@ export class AccountApi {
         credentials: 'include',
       });
       const body = await res.json();
-      return body.data;
+      return body;
     } catch (error) {
       console.error(error);
       throw error;
@@ -50,7 +49,7 @@ export class AccountApi {
 
   static async uploadTimetable(accessToken: string, timetable: string): Promise<void> {
     try {
-      await fetch(`${Constants.serverAddress}/account`, {
+      await fetch(`${Constants.serverAddress}/account/timetable`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
@@ -70,7 +69,7 @@ export class AccountApi {
 
   static async uploadCalculator(accessToken: string, timetable: string): Promise<void> {
     try {
-      await fetch(`${Constants.serverAddress}/account`, {
+      await fetch(`${Constants.serverAddress}/account/calculator`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',

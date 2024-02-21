@@ -17,8 +17,8 @@ export default function Help() {
 	}
 
 	const callapi = async () => {
-		const account = await AccountApi.getAccessToken('ae5fba13-1c33-4e8c-a3ef-40ac225b09b9');
-		console.dir(account);
+		const accessToken = await AccountApi.getAccessToken('ae5fba13-1c33-4e8c-a3ef-40ac225b09b9');
+		console.dir(accessToken);
 	}
 
 	useEffect(() => {
