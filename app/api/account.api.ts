@@ -1,8 +1,17 @@
 import { Constants } from '@/config/constants';
 
 export class AccountApi {
-  static async getAccessToken(): Promise<void> {
+  static async getAccessToken(tempToken: string): Promise<void> {
     try {
+      await fetch(`${Constants.serverAddress}/google/refresh`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'bearer ' + tempToken,
+        },
+        cache: 'no-cache',
+        credentials: 'include',
+      });
       const res = await fetch(`${Constants.serverAddress}/google/access`, {
         method: 'GET',
         headers: {
