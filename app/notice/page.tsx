@@ -10,6 +10,10 @@ export default function Notice() {
 			<h2 className="text-red-500">잘못 기입된 강의가 존재할 수 있습니다. 시간표를 다 만드시고 나서 꼭 수강신청 사이트에서 확인해주세요!!</h2>
 		</Card>
 		<Card className="flex-col items-center justify-center p-4 mt-2 mb-2 w-full">
+			<h1 className="text-center font-bold">업데이트 예정</h1>
+			<h1 className="text-center">구글 계정과 시간표 / 학점계산기 동기화</h1>
+		</Card>
+		<Card className="flex-col items-center justify-center p-4 mt-2 mb-2 w-full">
 			<h1 className="text-center font-bold">안녕하세요 경기타임 개발자입니다.</h1>
 			<h1 className="text-center">안녕하세요 시간표 작성 사이트 경기타임 개발자입니다. 감사 인사 및 버그 제보를 받기 위해 글을 썼습니다. <br/>
 2~4학년 수강신청 기간이 종료되었음에도 경기타임의 사용자 수가 최고치(하루 방문자수 천 명 돌파)를 경신했습니다. 왜 그런가 하고 살펴보니 신입생 분들이 시간표 작성에 불편을 겪어 많이 이용을 해주고 계신 것이었습니다. (학번이 안나오면 쿠티스를 못쓰는 걸 몰랐습니다. 쿠티스 없이 시간표를 짜다니...) <br/>
@@ -38,9 +42,6 @@ export default function Notice() {
 			<h1 className="text-center">학점계산기 페이지 추가</h1>
 			<h1 className="text-center">문의 페이지 추가</h1>
 			<h1 className="text-center">학년 미입력시 전공 과목이 뜨지 않는 오류 수정 (hotfix)</h1>
-		</Card>
-		<Card className="flex-col items-center justify-center p-4 mt-2 mb-2 w-full">
-			<h1 className="text-center font-bold">업데이트 예정</h1>
 		</Card>
 		</>
 	);
