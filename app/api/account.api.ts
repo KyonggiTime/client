@@ -20,8 +20,68 @@ export class AccountApi {
         cache: 'no-cache',
         credentials: 'include',
       });
+      console.log(res);
       const body = await res.json();
       return body.data;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
+
+  static async getAccount(accessToken: string): Promise<void> {
+    try {
+      const res = await fetch(`${Constants.serverAddress}/account`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'bearer ' + accessToken,
+        },
+        cache: 'no-cache',
+        credentials: 'include',
+      });
+      const body = await res.json();
+      return body.data;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
+
+  static async uploadTimetable(accessToken: string, timetable: string): Promise<void> {
+    try {
+      await fetch(`${Constants.serverAddress}/account`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'bearer ' + accessToken,
+        },
+        cache: 'no-cache',
+        credentials: 'include',
+        body: new URLSearchParams({
+          timetable,
+        }),
+      });
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
+
+  static async uploadCalculator(accessToken: string, timetable: string): Promise<void> {
+    try {
+      await fetch(`${Constants.serverAddress}/account`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'bearer ' + accessToken,
+        },
+        cache: 'no-cache',
+        credentials: 'include',
+        body: new URLSearchParams({
+          timetable,
+        }),
+      });
     } catch (error) {
       console.error(error);
       throw error;
