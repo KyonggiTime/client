@@ -10,6 +10,10 @@ export default function Notice() {
 			<h2 className="text-red-500">잘못 기입된 강의가 존재할 수 있습니다. 시간표를 다 만드시고 나서 꼭 수강신청 사이트에서 확인해주세요!!</h2>
 		</Card>
 		<Card className="flex-col items-center justify-center p-4 mt-2 mb-2 w-full">
+			<h1 className="text-center font-bold">경기타임 Next.js 팀원 모집</h1>
+			<a className="text-blue-600 underline" href="https://everytime.kr/375140/v/331630405">모집 글</a><br/>
+		</Card>
+		<Card className="flex-col items-center justify-center p-4 mt-2 mb-2 w-full">
 			<h1 className="text-center font-bold">업데이트 예정</h1>
 			<h1 className="text-center">구글 계정과 시간표 / 학점계산기 동기화 (현재 작업중)</h1>
 		</Card>
