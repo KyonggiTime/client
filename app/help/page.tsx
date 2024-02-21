@@ -2,8 +2,9 @@
 import { Button } from "@nextui-org/button";
 import { Card } from "@nextui-org/card";
 import { Input, Textarea } from "@nextui-org/input";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { HelpApi } from "../api/help.api";
+import { AccountApi } from "../api/account.api";
 
 export default function Help() {
 	const [title, setTitle] = useState<string>("");
@@ -14,6 +15,16 @@ export default function Help() {
 		setDescription("");
 		alert("문의가 접수되었습니다.")
 	}
+
+	const callapi = async () => {
+		const account = await AccountApi.getAccessToken();
+		console.dir(account);
+	}
+
+	useEffect(() => {
+		callapi();
+	}, []);
+
 	return (
 		<>
 			<Card className="flex-col items-center justify-center p-4 mt-2 mb-2 w-full">
