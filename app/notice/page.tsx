@@ -33,6 +33,13 @@ export default function Notice() {
 			</h1>
 		</Card>
 		<Card className="flex-col items-center justify-center p-4 mt-2 mb-2 w-full">
+			<h1 className="text-center font-bold">경기타임 개발자 후원</h1>
+			<h1 className="text-center">후원해주시는 모든 금액은 서버비와 코드를 짜내기위해 구입하는 컴포즈커피 아메리카노에 사용됩니다 ㅠㅠ</h1>
+			<h1 className="text-center">
+				<a className="text-blue-600 underline" href="https://www.buymeacoffee.com/jinhyeokfang">Buy Me a Coffee</a><br/>
+			</h1>
+		</Card>
+		<Card className="flex-col items-center justify-center p-4 mt-2 mb-2 w-full">
 			<h1 className="text-center font-bold">업데이트 내역</h1>
 			<h1 className="text-center">텍스트 가독성 / 디자인 개선</h1>
 			<h1 className="text-center">띄어쓰기 시 강의가 검색되지 않는 오류 수정</h1>
