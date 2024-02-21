@@ -20,8 +20,8 @@ export class AccountApi {
         cache: 'no-cache',
         credentials: 'include',
       });
-      console.log(res);
       const body = await res.json();
+      console.log(body);
       return body.data;
     } catch (error) {
       console.error(error);
