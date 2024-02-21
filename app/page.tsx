@@ -171,7 +171,7 @@ export default function Home() {
 		<>
 		<Card className="flex-col items-center justify-center mb-2 w-full">
 			<h1 className="text-center font-bold">어플리케이션 설치 방법 (모바일)</h1>
-			<h1 className="text-center">크롬으로 접속 -&gt; 브라우저 우측 메뉴 -&gt; 홈 화면에 추가</h1>
+			<h1 className="text-center">크롬으로 접속 -&gt; 브라우저 우측 메뉴 -&gt; 앱 설치</h1>
 		</Card>
 			<h1 className="text-center text-xl font-bold mb-2">시간표</h1>
 			<div className="m-auto max-w-[1000px]">
