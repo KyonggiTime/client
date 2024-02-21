@@ -69,7 +69,7 @@ if (!self.define) {
 }
 define(['./workbox-bd7e3b9b'], (function (workbox) { 'use strict';
 
-  importScripts("fallback-development.js");
+  importScripts();
   self.skipWaiting();
   workbox.clientsClaim();
   workbox.registerRoute("/", new workbox.NetworkFirst({
@@ -90,19 +90,11 @@ define(['./workbox-bd7e3b9b'], (function (workbox) { 'use strict';
         }
         return response;
       }
-    }, {
-      handlerDidError: async ({
-        request
-      }) => self.fallback(request)
     }]
   }), 'GET');
   workbox.registerRoute(/.*/i, new workbox.NetworkOnly({
     "cacheName": "dev",
-    plugins: [{
-      handlerDidError: async ({
-        request
-      }) => self.fallback(request)
-    }]
+    plugins: []
   }), 'GET');
 
 }));
