@@ -2,10 +2,34 @@
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenu, NavbarMenuToggle } from "@nextui-org/navbar";
 import Link from "next/link";
 import { HeaderNavigation } from "./header-navigation";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useRecoilState } from "recoil";
+import { authState } from "@/states/auth";
+import { AccountApi } from "@/app/api/account.api";
+import { useEffect } from "react";
 
 export const HeaderBar = () => {
     const { push } = useRouter();
+    const pathname = usePathname();
+    const params = useSearchParams();
+    const [auth, setAuth] = useRecoilState(authState);
+
+    const loadAuth = async () => {
+      const accessToken = await AccountApi.getAccessToken(params.get('tempToken'));
+      setAuth({
+        isLoggedIn: accessToken != null,
+        token: accessToken,
+      });
+      push(pathname);
+    }
+
+    useEffect(() => {
+      loadAuth();
+    }, []);
+
+    useEffect(() => {
+      console.log(auth);
+    }, [auth]);
 
     return (
       <Navbar className="shadow-md">

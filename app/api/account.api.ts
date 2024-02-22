@@ -1,23 +1,23 @@
 import { Constants } from '@/config/constants';
 
 export class AccountApi {
-  static async getAccessToken(tempToken: string): Promise<void> {
+  static async getAccessToken(tempToken: string | null): Promise<void> {
     try {
-      await fetch(`${Constants.serverAddress}/google/refresh`, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'bearer ' + tempToken,
-        },
-        cache: 'no-cache',
-        credentials: 'include',
-      });
+      if (tempToken) {
+        await fetch(`${Constants.serverAddress}/google/refresh`, {
+          method: 'GET',
+          headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'bearer ' + tempToken,
+          },
+          credentials: 'include',
+        });
+      }
       const res = await fetch(`${Constants.serverAddress}/google/access`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
         },
-        cache: 'no-cache',
         credentials: 'include',
       });
       const body = await res.json();
@@ -55,7 +55,6 @@ export class AccountApi {
             'Content-Type': 'application/json',
             'Authorization': 'bearer ' + accessToken,
         },
-        cache: 'no-cache',
         credentials: 'include',
         body: new URLSearchParams({
           timetable,
@@ -75,7 +74,6 @@ export class AccountApi {
             'Content-Type': 'application/json',
             'Authorization': 'bearer ' + accessToken,
         },
-        cache: 'no-cache',
         credentials: 'include',
         body: new URLSearchParams({
           timetable,

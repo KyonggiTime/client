@@ -61,21 +61,21 @@ export default function RootLayout({
 					`bg-gray-100 antialiased ${notoSansKr.className}`,
 				)}
 			>
-				<HeaderBar />
 				<Providers themeProps={{ attribute: "class", defaultTheme: "light" }}>
-					<div className="relative flex flex-col h-screen">
-						<main className="container mx-auto max-w-7xl pt-8 mb-10 px-6 flex-grow">
-							{children}
-						</main>
-						<Divider />
-						<footer className="w-full flex items-center justify-start p-4">
-							<p className="text-sm">
-								서비스명: 경기타임 : 경기대학교 강의 시간표 <br />
-								제작자: 방진혁 (<a href="https://jinhy.uk">https://jinhy.uk</a>)<br />
-								깃허브: <a href="https://github.com/jinhyeokfang">https://github.com/jinhyeokfang</a> <br/>
-							</p>
-						</footer>
-					</div>
+						<HeaderBar />
+						<div className="relative flex flex-col h-screen">
+							<main className="container mx-auto max-w-7xl pt-8 mb-10 px-6 flex-grow">
+								{children}
+							</main>
+							<Divider />
+							<footer className="w-full flex items-center justify-start p-4">
+								<p className="text-sm">
+									서비스명: 경기타임 : 경기대학교 강의 시간표 <br />
+									제작자: 방진혁 (<a href="https://jinhy.uk">https://jinhy.uk</a>)<br />
+									깃허브: <a href="https://github.com/jinhyeokfang">https://github.com/jinhyeokfang</a> <br/>
+								</p>
+							</footer>
+						</div>
 				</Providers>
 				<Analytics />
 				<SpeedInsights/>

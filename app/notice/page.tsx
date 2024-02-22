@@ -16,6 +16,7 @@ export default function Notice() {
 		<Card className="flex-col items-center justify-center p-4 mt-2 mb-2 w-full">
 			<h1 className="text-center font-bold">업데이트 예정</h1>
 			<h1 className="text-center">구글 계정과 시간표 / 학점계산기 동기화 (현재 작업중)</h1>
+			<h1 className="text-center">시간표 여러 개 저장</h1>
 		</Card>
 		<Card className="flex-col items-center justify-center p-4 mt-2 mb-2 w-full">
 			<h1 className="text-center font-bold">경기타임 개발자 후원</h1>
