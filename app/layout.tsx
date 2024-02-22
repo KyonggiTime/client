@@ -52,6 +52,7 @@ export default function RootLayout({
 				<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
 				<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 				<link rel="manifest" href="/manifest.json" />
+				<meta name="naver-site-verification" content="d8eb1b5bd2c665ef7273911ae879c92011691d01" />
 				<meta name="msapplication-TileColor" content="#0070f0" />
 				<meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
 				<meta name="theme-color" content="#0070f0" />
