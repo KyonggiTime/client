@@ -53,6 +53,7 @@ export default function Notice() {
 			<h1 className="text-center">강의번호에 과목코드 병기</h1>
 			<h1 className="text-center">구글 계정으로 시간표 동기화 (Alpha)</h1>
 			<h1 className="text-center">시간표가 제대로 저장되지 않는 문제 수정</h1>
+			<h1 className="text-center">계정에 시간표 정보가 없는 경우 로컬의 시간표를 업로드하여 동기화</h1>
 		</Card>
 		</>
 	);
