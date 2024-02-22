@@ -20,9 +20,10 @@ export const HeaderBar = () => {
         isLoggedIn: accessToken != null,
         token: accessToken,
       });
-      push(pathname);
-      if (accessToken)
+      if (params.get('tempToken')) {
+        push(pathname);
         location.reload();
+      }
     }
 
     useEffect(() => {
