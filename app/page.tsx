@@ -205,9 +205,10 @@ export default function Home() {
 	return (
 		<>
 		<Card className="flex-col items-center justify-center mb-2 w-full">
-			<h1 className="text-center font-bold">어플리케이션 설치 방법 (모바일)</h1>
-			<h1 className="text-center">안드로이드: 크롬으로 접속 -&gt; 브라우저 우측 메뉴 -&gt; 앱 설치</h1>
-			<h1 className="text-center">아이폰: 사파리로 접속 -&gt; 공유 아이콘 클릭 -&gt; 홈 화면에 추가</h1>
+			<h1 className="text-center font-bold text-xs">어플리케이션 설치 방법 (모바일)</h1>
+			<h1 className="text-center text-xs">안드로이드: 크롬으로 접속 -&gt; 브라우저 우측 메뉴 -&gt; 앱 설치</h1>
+			<h1 className="text-center text-xs">아이폰: 사파리로 접속 -&gt; 공유 아이콘 클릭 -&gt; 홈 화면에 추가</h1>
+			<h1 className="text-center font-bold text-xs">구글 로그인으로 시간표를 계정과 동기화해보세요! (현재 작업한 시간표가 모두 사라지니 조심하세요!)</h1>
 		</Card>
 			<h1 className="text-center text-xl font-bold mb-2">시간표</h1>
 			<div className="m-auto max-w-[1000px]">
