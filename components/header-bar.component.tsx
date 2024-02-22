@@ -21,6 +21,7 @@ export const HeaderBar = () => {
         token: accessToken,
       });
       push(pathname);
+      location.reload();
     }
 
     useEffect(() => {
