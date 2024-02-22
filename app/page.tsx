@@ -72,6 +72,14 @@ export default function Home() {
 	const loadTimetable = async () => {
 		if (auth.isLoggedIn) {
 			const account = await AccountApi.getAccount(auth.token);
+			if (account.savedTimeTable == '') {
+				const savedTimeTable = localStorage.getItem('timeTable');
+				if (savedTimeTable != null) {
+					await AccountApi.uploadTimetable(auth.token, savedTimeTable);
+					loadTimetableFromLocalStorage();
+					return null;
+				}
+			}
 			return account.savedTimetable;
 		} else {
 			loadTimetableFromLocalStorage();
