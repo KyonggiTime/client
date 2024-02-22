@@ -7,10 +7,13 @@ import { Accordion, AccordionItem } from "@nextui-org/accordion";
 import { CAMPUS } from "@/config/campus";
 import { GRADE } from "@/config/grade";
 import { LectureApi } from "./api/lecture.api";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { hasDuplicates, splitTime } from "@/util/util";
 import { Lecture } from "@/components/lecture.component";
 import { LargeLecture } from "@/components/large-lecture.component";
+import { AccountApi } from "./api/account.api";
+import { useRecoilState } from "recoil";
+import { authState } from "@/states/auth";
 
 export default function Home() {
 	const [lectures, setLectures] = useState<Record<string, string>[]>([]);
@@ -36,16 +39,8 @@ export default function Home() {
 	const [roomInSelfForm, setRoomInSelfForm] = useState<string>("");
 	const [timeInSelfForm, setTimeInSelfForm] = useState<string>("");
 
-	const handleWindowSizeChange = () => {
-			setWidth(window.innerWidth);
-	}
-	useEffect(() => {
-			setWidth(window.innerWidth);
-			window.addEventListener('resize', handleWindowSizeChange);
-			return () => {
-					window.removeEventListener('resize', handleWindowSizeChange);
-			}
-	}, []);
+	const [auth, setAuth] = useRecoilState(authState);
+
 	const [timeTable, setTimeTable] = useState<Record<string, unknown[]>>({
     '월': [],
     '화': [],
@@ -55,12 +50,45 @@ export default function Home() {
 		lectures: []
   });
 
-  useEffect(() => {
-    const savedTimeTable = localStorage.getItem('timeTable');
+	const handleWindowSizeChange = () => {
+			setWidth(window.innerWidth);
+	}
+
+	const loadTimetableFromLocalStorage = () => {
+		const savedTimeTable = localStorage.getItem('timeTable');
 		if (savedTimeTable != null) {
 			setTimeTable(JSON.parse(savedTimeTable));
 		}
-  }, []);
+	}
+
+	useEffect(() => {
+			setWidth(window.innerWidth);
+			window.addEventListener('resize', handleWindowSizeChange);
+			return () => {
+					window.removeEventListener('resize', handleWindowSizeChange);
+			}
+	}, []);
+
+	const loadTimetable = async () => {
+		if (auth.isLoggedIn) {
+			const account = await AccountApi.getAccount(auth.token);
+			return account.savedTimetable;
+		} else {
+			loadTimetableFromLocalStorage();
+			return null;
+		}
+	};
+
+	useEffect(() => {
+    const fetchData = async () => {
+			const timetableData = await loadTimetable();
+			if (timetableData !== null) {
+					setTimeTable(JSON.parse(timetableData));
+			}
+    };
+
+    fetchData();
+	}, []);
 
 	const onSearchButtonClicked = async () => {
 		const lecturesFromApi = await LectureApi.loadLectures({campusName: campus, grade, professor, name, major, group: timezone, query: query.replaceAll(' ', ''), lectureNumber});
@@ -95,10 +123,17 @@ export default function Home() {
 			...newTimeTable,
 			lectures,
 		});
-		localStorage.setItem('timeTable', JSON.stringify({
-			...newTimeTable,
-			lectures,
-		}));
+		if (auth.isLoggedIn) {
+			await AccountApi.uploadTimetable(auth.token, JSON.stringify({
+				...newTimeTable,
+				lectures,
+			}));
+		} else {
+			localStorage.setItem('timeTable', JSON.stringify({
+				...newTimeTable,
+				lectures,
+			}));
+		}
 	}
 
 	const onAddLectureSelfButtonClicked = async () => {
@@ -185,6 +220,7 @@ export default function Home() {
 							<span className="text-sm text-center p-2 bg-[#0070F0] text-white border shadow-xl rounded-xl">금</span>
 					</div>
 					{
+						timeTable.lectures &&
 						[1,2,3,4,5,6,7,8,9,10].map((item) => (
 							<div className="grid grid-cols-5 text-center" key={item}>
 									{ timeTable['월'].some(time => time.time == item) ? (<div className="text-sm text-center p-1 sm:p-2 bg-[#90B8E7] text-white border border-gray-300 shadow-2xl rounded-xl">{timeTable['월'].find(time => time.time == item).lecture.name}</div>) : (<div className="text-sm text-center p-2 bg-white border border-gray-300 shadow-2xl rounded-xl"></div>) }
@@ -198,6 +234,7 @@ export default function Home() {
 				</div>
 			</div>
 				{
+					timeTable.lectures &&
 					timeTable.lectures.filter(lecture => lecture.time == "").length > 0 &&
 					(
 						<>
@@ -214,6 +251,7 @@ export default function Home() {
 			<Card className="flex-col items-center justify-center p-4 mt-2 gap-4 w-full">
 				<h1 className="text-center text-md font-bold">추가한 강의</h1>
 				{
+					timeTable.lectures &&
 					timeTable.lectures.map(lecture => (
 							width <= 800 ? 
 								<LargeLecture

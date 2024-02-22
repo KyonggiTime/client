@@ -27,10 +27,6 @@ export const HeaderBar = () => {
       loadAuth();
     }, []);
 
-    useEffect(() => {
-      console.log(auth);
-    }, [auth]);
-
     return (
       <Navbar className="shadow-md">
         <NavbarBrand className="cursor-pointer" onClick={() => push('/')}>

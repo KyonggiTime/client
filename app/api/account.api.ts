@@ -1,7 +1,7 @@
 import { Constants } from '@/config/constants';
 
 export class AccountApi {
-  static async getAccessToken(tempToken: string | null): Promise<void> {
+  static async getAccessToken(tempToken: string | null): Promise<unknown> {
     try {
       if (tempToken) {
         await fetch(`${Constants.serverAddress}/google/refresh`, {
@@ -28,7 +28,7 @@ export class AccountApi {
     }
   }
 
-  static async getAccount(accessToken: string): Promise<void> {
+  static async getAccount(accessToken: string): Promise<unknown> {
     try {
       const res = await fetch(`${Constants.serverAddress}/account`, {
         method: 'GET',
@@ -56,7 +56,7 @@ export class AccountApi {
             'Authorization': 'bearer ' + accessToken,
         },
         credentials: 'include',
-        body: new URLSearchParams({
+        body: JSON.stringify({
           timetable,
         }),
       });
@@ -75,7 +75,7 @@ export class AccountApi {
             'Authorization': 'bearer ' + accessToken,
         },
         credentials: 'include',
-        body: new URLSearchParams({
+        body: JSON.stringify({
           timetable,
         }),
       });
