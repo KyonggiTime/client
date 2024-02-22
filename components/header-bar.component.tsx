@@ -22,7 +22,7 @@ export const HeaderBar = () => {
       });
       if (params.get('tempToken')) {
         push(pathname);
-        location.reload();
+        location.href = 'https://kyonggiti.me';
       }
     }
 
