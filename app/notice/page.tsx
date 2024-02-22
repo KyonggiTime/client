@@ -52,6 +52,7 @@ export default function Notice() {
 			<h1 className="text-center">4.5L 등 90분 수업이 입력되지 않는 오류 수정</h1>
 			<h1 className="text-center">강의번호에 과목코드 병기</h1>
 			<h1 className="text-center">구글 계정으로 시간표 동기화 (Alpha)</h1>
+			<h1 className="text-center">시간표가 제대로 저장되지 않는 문제 수정</h1>
 		</Card>
 		</>
 	);
