@@ -106,6 +106,7 @@ export default function Calculator() {
 					label: '전체',
 					data: SEMESTER.map(
 						item => classData.filter(classItem => classItem.semester == item.key)
+							.filter(classItem => classItem.mark >= 0)
 							.map(classItem => classItem.mark)
 							.reduce((average, mark, index, array) => {
 								return average + mark / array.length;
