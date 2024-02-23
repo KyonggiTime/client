@@ -20,6 +20,9 @@ import { Line } from 'react-chartjs-2';
 import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@nextui-org/dropdown';
 import { SEMESTER } from "@/config/semester";
 import { useEffect, useState } from 'react';
+import { useRecoilState } from 'recoil';
+import { authState } from '@/states/auth';
+import { AccountApi } from '../api/account.api';
 
 ChartJS.register(
   CategoryScale,
@@ -62,12 +65,27 @@ export default function Calculator() {
 	const [mark, setMark] = useState<string>("");
 	const [credit, setCredit] = useState<string>("");
 	const [name, setName] = useState<string>("");
+
+	const [auth, setAuth] = useRecoilState(authState);
 	
   useEffect(() => {
-    const savedTimeTable = localStorage.getItem('calculatorTimeTable');
-		if (savedTimeTable != null) {
-			setClasses(JSON.parse(savedTimeTable).data);
-			updateData(JSON.parse(savedTimeTable).data);
+		if (auth.isLoggedIn) {
+			if (auth.savedCalculatorTimetable != null) {
+				const timeTable = JSON.parse(auth.savedCalculatorTimetable).data;
+				setClasses(timeTable);
+				updateData(timeTable);
+			} else {
+				const savedTimeTable = localStorage.getItem('calculatorTimeTable');
+				if (savedTimeTable != null) {
+					AccountApi.uploadCalculator(auth.token, savedTimeTable);
+				}
+			}
+		} else {
+			const savedTimeTable = localStorage.getItem('calculatorTimeTable');
+			if (savedTimeTable != null) {
+				setClasses(JSON.parse(savedTimeTable).data);
+				updateData(JSON.parse(savedTimeTable).data);
+			}
 		}
 	}, []);
 	
@@ -117,7 +135,7 @@ export default function Calculator() {
 		});
 	}
 
-	const onAddButtonClick = () => {
+	const onAddButtonClick = async () => {
 		setClasses([
 			...classes,
 			{
@@ -140,6 +158,17 @@ export default function Calculator() {
 				semester,
 			}
 		]);
+		await AccountApi.uploadCalculator(auth.token, JSON.stringify({data: [
+			...classes,
+			{
+				id: new Date().getTime(),
+				name,
+				credit,
+				mark,
+				isMajor,
+				semester,
+			}
+		]}));
 	}
 
 	const onRemoveButtonClick = (id: number) => {
