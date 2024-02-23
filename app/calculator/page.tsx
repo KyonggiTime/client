@@ -62,6 +62,7 @@ export default function Calculator() {
 	});
 
 	const [semester, setSemester] = useState<string>("1학년 1학기");
+	const [semesterForFilter, setSemesterForFilter] = useState<string>("1학년 1학기");
 	const [isMajor, setIsMajor] = useState<boolean>(false);
 	const [mark, setMark] = useState<string>("4.5");
 	const [credit, setCredit] = useState<string>("");
@@ -275,10 +276,29 @@ export default function Calculator() {
 				</div>
 			</Card>
 			<Card className="flex items-center justify-center mt-4 p-4 w-full">
-				<div className="grid grid-cols-3 gap-2 w-full p-2">
-				</div>
+					<h1 className="text-center font-bold">추가한 강의 목록</h1>
+					<Dropdown>
+						<DropdownTrigger className="mt-2">
+							<Button 
+								variant="bordered" 
+							>
+								{ semesterForFilter ? semesterForFilter : "" }
+							</Button>
+						</DropdownTrigger>
+						<DropdownMenu items={SEMESTER} selectionMode="single" onSelectionChange={keys => setSemesterForFilter(Array.from(keys).join(", ").replaceAll("_", " "))}>
+							{(item: {key: string, label: string}) => (
+								<DropdownItem
+									key={item.key}
+								>
+									{item.label}
+								</DropdownItem>
+							)}
+						</DropdownMenu>
+					</Dropdown>
 				{
-					classes.map(classItem => (
+					classes
+						.filter(classItem => classItem.semester == semesterForFilter)
+						.map(classItem => (
 						<Card className="grid grid-cols-3 gap-2 w-full m-2 p-2 items-center" key={ classItem.id }>
 							<span className="text-sm text-center">학기</span>
 							<span className="text-sm text-center">강의명</span>
