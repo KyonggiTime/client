@@ -14,8 +14,8 @@ export default function Notice() {
 		</Card>
 		<Card className="flex-col items-center justify-center p-4 mt-2 mb-2 w-full">
 			<h1 className="text-center font-bold">업데이트 예정</h1>
-			<h1 className="text-center">구글 계정과 학점계산기 동기화 (현재 작업중)</h1>
 			<h1 className="text-center">시간표 여러 개 저장</h1>
+			<h1 className="text-center">강의평 추가</h1>
 		</Card>
 		<Card className="flex-col items-center justify-center p-4 mt-2 mb-2 w-full">
 			<h1 className="text-center font-bold">경기타임 개발과정 후기</h1>
@@ -26,7 +26,7 @@ export default function Notice() {
 		</Card>
 		<Card className="flex-col items-center justify-center p-4 mt-2 mb-2 w-full">
 			<h1 className="text-center font-bold">업데이트 내역</h1>
-			<h1 className="text-center">구글 계정으로 시간표 동기화 (Alpha)</h1>
+			<h1 className="text-center">구글 계정으로 시간표 / 학점계산기 동기화 (Beta)</h1>
 			<h1 className="text-center">시간표가 제대로 저장되지 않는 문제 수정</h1>
 			<h1 className="text-center">계정에 시간표 정보가 없는 경우 로컬의 시간표를 업로드하여 동기화</h1>
 		</Card>

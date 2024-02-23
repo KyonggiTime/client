@@ -18,7 +18,7 @@ export default function Home() {
 			<h1 className="text-2xl text-left w-full">공지사항</h1>
 		</Card>
 		<Card className="flex-col items-center justify-center p-4 mt-2 mb-2 w-full cursor-pointer bg-primary text-white shadow-2xl" isPressable onClick={() => push('/help')}>
-			<h1 className="text-2xl text-left w-full">버그 제보 및 문의</h1>
+			<h1 className="text-2xl text-left w-full">문의</h1>
 		</Card>
 		<Card className="flex-col items-center justify-center p-4 mt-2 mb-2 w-full cursor-pointer bg-primary text-white shadow-2xl" isPressable onClick={() => push('https://api.kyonggiti.me/google')}>
 			<h1 className="text-2xl text-left w-full">구글 로그인</h1>

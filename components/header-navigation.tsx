@@ -15,18 +15,18 @@ export const HeaderNavigation = () => {
             시간표
         </Link>
         <Link className="font-bold text-sm mr-6" color="foreground" href="/calculator">
-            학점계산
+            학점계산기
         </Link>
         <Link className="font-bold text-sm mr-6" color="foreground" href="/notice">
             공지사항
         </Link>
         <Link className="font-bold text-sm mr-6" color="foreground" href="/help">
-            버그 제보 및 문의
+            문의
         </Link>
         {
           auth.isLoggedIn ||
           <Link className="font-bold text-sm" color="foreground" href="https://api.kyonggiti.me/google">
-              구글로 로그인 (Alpha)
+              구글 로그인
           </Link>
         }
       </>
