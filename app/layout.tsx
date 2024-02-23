@@ -37,6 +37,7 @@ export default function RootLayout({
 	return (
 		<html lang="en" suppressHydrationWarning>
 			<head>
+				<meta name="naver-site-verification" content="0ae833cf7390f23488950c20463598a3e2563091" />
 				<link rel="manifest" href="/manifest.json" />
 				<link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png" />
 				<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png" />
