@@ -6,16 +6,19 @@ export default function Notice() {
 		<>
 		<h1 className="text-center text-xl font-bold mb-4">공지사항</h1>
 		<Card className="flex-col items-center justify-center p-4 mt-2 mb-2 w-full">
-			<h1 className="text-red-500 text-md font-bold">주의</h1>
-			<h2 className="text-red-500">잘못 기입된 강의가 존재할 수 있습니다. 시간표를 다 만드시고 나서 꼭 수강신청 사이트에서 확인해주세요!!</h2>
-		</Card>
-		<Card className="flex-col items-center justify-center p-4 mt-2 mb-2 w-full">
 			<h1 className="text-center font-bold">경기타임 Next.js 팀원 모집 <a className="text-blue-600 underline" href="https://everytime.kr/375140/v/331630405">모집 글</a></h1>
 		</Card>
 		<Card className="flex-col items-center justify-center p-4 mt-2 mb-2 w-full">
 			<h1 className="text-center font-bold">업데이트 예정</h1>
 			<h1 className="text-center">시간표 여러 개 저장</h1>
 			<h1 className="text-center">강의평 추가</h1>
+			<br/>
+			
+			<h1 className="text-center font-bold">업데이트 내역</h1>
+			<h1 className="text-center">구글 계정으로 시간표 / 학점계산기 동기화 (Beta)</h1>
+			<h1 className="text-center">시간표가 제대로 저장되지 않는 문제 수정</h1>
+			<h1 className="text-center">계정에 시간표 정보가 없는 경우 로컬의 시간표를 업로드하여 동기화</h1>
+			<h1 className="text-center">강의 계산기 UI 개선 및 패논패 지원</h1>
 		</Card>
 		<Card className="flex-col items-center justify-center p-4 mt-2 mb-2 w-full">
 			<h1 className="text-center font-bold">경기타임 개발과정 후기</h1>
@@ -25,10 +28,6 @@ export default function Notice() {
 			</h1>
 		</Card>
 		<Card className="flex-col items-center justify-center p-4 mt-2 mb-2 w-full">
-			<h1 className="text-center font-bold">업데이트 내역</h1>
-			<h1 className="text-center">구글 계정으로 시간표 / 학점계산기 동기화 (Beta)</h1>
-			<h1 className="text-center">시간표가 제대로 저장되지 않는 문제 수정</h1>
-			<h1 className="text-center">계정에 시간표 정보가 없는 경우 로컬의 시간표를 업로드하여 동기화</h1>
 		</Card>
 		</>
 	);
