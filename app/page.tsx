@@ -9,7 +9,7 @@ export default function Home() {
 		<>
 		<h1 className="text-center font-bold text-xs">홈 화면</h1>
 		<Card className="flex-col items-center justify-center p-4 mt-2 mb-2 w-full cursor-pointer" isPressable onClick={() => push('/timetable')}>
-			<h1 className="font-bold text-3xl text-left w-full">시간표</h1>
+			<h1 className="font-bold text-3xl text-left w-full">시간표로 이동</h1>
 		</Card>
 		<Card className="flex-col items-center justify-center p-4 mt-2 mb-2 w-full cursor-pointer" isPressable onClick={() => push('/calculator')}>
 			<h1 className="font-bold text-3xl text-left w-full">학점계산기</h1>
