@@ -9,6 +9,9 @@ export const HeaderNavigation = () => {
     return (
       <>
         <Link className="font-bold text-sm mr-6" color="foreground" href="/">
+            홈
+        </Link>
+        <Link className="font-bold text-sm mr-6" color="foreground" href="/timetable">
             시간표
         </Link>
         <Link className="font-bold text-sm mr-6" color="foreground" href="/calculator">
