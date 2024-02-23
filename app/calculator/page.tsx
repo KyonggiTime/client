@@ -67,19 +67,24 @@ export default function Calculator() {
 	const [name, setName] = useState<string>("");
 
 	const [auth, setAuth] = useRecoilState(authState);
+
+	const loadCalculatorFromAccount = async () => {
+		const account = await AccountApi.getAccount(auth.token);
+		if (account.savedCalculatorTimetable != null) {
+			const timeTable = JSON.parse(account.savedCalculatorTimetable).data;
+			setClasses(timeTable);
+			updateData(timeTable);
+		} else {
+			const savedTimeTable = localStorage.getItem('calculatorTimeTable');
+			if (savedTimeTable != null) {
+				AccountApi.uploadCalculator(auth.token, savedTimeTable);
+			}
+		}
+	}
 	
   useEffect(() => {
 		if (auth.isLoggedIn) {
-			if (auth.savedCalculatorTimetable != null) {
-				const timeTable = JSON.parse(auth.savedCalculatorTimetable).data;
-				setClasses(timeTable);
-				updateData(timeTable);
-			} else {
-				const savedTimeTable = localStorage.getItem('calculatorTimeTable');
-				if (savedTimeTable != null) {
-					AccountApi.uploadCalculator(auth.token, savedTimeTable);
-				}
-			}
+			loadCalculatorFromAccount();
 		} else {
 			const savedTimeTable = localStorage.getItem('calculatorTimeTable');
 			if (savedTimeTable != null) {
