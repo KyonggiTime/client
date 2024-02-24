@@ -14,14 +14,11 @@ export const HeaderNavigation = () => {
         <Link className="font-bold text-sm mr-6" color="foreground" href="/timetable">
             시간표
         </Link>
+        <Link className="font-bold text-sm mr-6" color="foreground" href="/map">
+            학교 지도
+        </Link>
         <Link className="font-bold text-sm mr-6" color="foreground" href="/calculator">
             학점계산기
-        </Link>
-        <Link className="font-bold text-sm mr-6" color="foreground" href="/notice">
-            공지사항
-        </Link>
-        <Link className="font-bold text-sm mr-6" color="foreground" href="/help">
-            문의
         </Link>
         {
           auth.isLoggedIn ||
