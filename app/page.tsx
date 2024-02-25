@@ -1,8 +1,11 @@
 'use client'
+import { authState } from "@/states/auth";
 import { Card } from "@nextui-org/card";
 import { useRouter } from "next/navigation";
+import { useRecoilState } from "recoil";
 
 export default function Home() {
+	const [auth, setAuth] = useRecoilState(authState);
 	const { push } = useRouter();
 
 	return (
@@ -18,9 +21,19 @@ export default function Home() {
 			<Card className="flex-col items-center justify-center w-[45%] p-4 cursor-pointer bg-primary-400 text-white shadow-2xl" isPressable onClick={() => push('/calculator')}>
 				<h1 className="text-2xl">학점계산기</h1>
 			</Card>
-			<Card className="flex-col items-center justify-center w-[45%] p-4 cursor-pointer bg-primary-400 text-white shadow-2xl" isPressable onClick={() => push('https://api.kyonggiti.me/google')}>
-				<h1 className="text-2xl">로그인</h1>
-			</Card>
+			{
+				auth.isLoggedIn ?
+				(
+					<Card className="flex-col items-center justify-center w-[45%] p-4 cursor-pointer bg-primary-400 text-white shadow-2xl" isPressable onClick={() => push('https://api.kyonggiti.me/google/logout')}>
+						<h1 className="text-2xl">로그아웃</h1>
+					</Card>
+				) :	
+				(
+					<Card className="flex-col items-center justify-center w-[45%] p-4 cursor-pointer bg-primary-400 text-white shadow-2xl" isPressable onClick={() => push('https://api.kyonggiti.me/google')}>
+						<h1 className="text-2xl">로그인</h1>
+					</Card>
+				)
+			}
 		</div>
 		<Card className="flex-col items-center justify-center my-6 w-full">
 			<h1 className="text-center font-bold text-sm">어플리케이션 설치 방법 (모바일)</h1>
