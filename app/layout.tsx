@@ -5,8 +5,8 @@ import clsx from "clsx";
 import { Divider } from "@nextui-org/divider";
 import { HeaderBar } from "@/components/header-bar.component";
 import { Analytics } from '@vercel/analytics/react';
-import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Noto_Sans_KR } from 'next/font/google';
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 const notoSansKr = Noto_Sans_KR({
   weight: ['500'],
@@ -79,7 +79,7 @@ export default function RootLayout({
 						</div>
 				</Providers>
 				<Analytics />
-				<SpeedInsights/>
+				<GoogleAnalytics gaId="G-5M7C00GWRV" />
 			</body>
 		</html>
 	);
