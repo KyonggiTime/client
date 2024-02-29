@@ -27,6 +27,12 @@ export const metadata: Metadata = {
 		shortcut: "/favicon-16x16.png",
 		apple: "/apple-touch-icon.png",
 	},
+	openGraph: {
+		title: "경기타임",
+		description: "경기타임: 경기대학교 강의 시간표 서비스",
+		type: "website",
+		url: "https://kyonggiti.me"
+	}
 };
 
 export default function RootLayout({
