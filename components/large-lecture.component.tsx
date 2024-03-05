@@ -50,11 +50,11 @@ export const LargeLecture = ({
             (
               <Card className="grid grid-cols-3 gap-2 w-full p-2" key={lecture.id} isPressable onPress={onCardClick}>
                 <span className="text-sm text-center">이름</span>
-                <span className="text-sm text-center">교수</span>
                 <span className="text-sm text-center">시간</span>
+                <span className="text-sm text-center">강의실</span>
                 <span className="text-sm text-center">{lecture.name}</span>
-                <span className="text-sm text-center">{lecture.professor}</span>
                 <span className="text-sm text-center">{lecture.time}</span>
+                <span className="text-sm text-center">{lecture.room}</span>
             </Card>
             )
         }

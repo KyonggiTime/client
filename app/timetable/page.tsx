@@ -7,7 +7,7 @@ import { Accordion, AccordionItem } from "@nextui-org/accordion";
 import { CAMPUS } from "@/config/campus";
 import { GRADE } from "@/config/grade";
 import { LectureApi } from "../api/lecture.api";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { hasDuplicates, splitTime } from "@/util/util";
 import { Lecture } from "@/components/lecture.component";
 import { LargeLecture } from "@/components/large-lecture.component";

@@ -1,6 +1,6 @@
 import { Constants } from '@/config/constants';
 
-export class AccountApi {
+export class EvaluationApi {
   static async getEvaluations(
     accessToken: string, 
     nameOfLecture: string,
