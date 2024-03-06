@@ -2,16 +2,18 @@ import { Constants } from '@/config/constants';
 
 export class EvaluationApi {
   static async getEvaluations(
-    accessToken: string, 
-    nameOfLecture: string,
-    nameOfProfessor: string
+    lecture: string,
+    professor: string
   ): Promise<unknown> {
     try {
-      const res = await fetch(`${Constants.serverAddress}/evaluation/${nameOfLecture}/${nameOfProfessor}`, {
+      const query = new URLSearchParams({
+        lecture,
+        professor,
+      }).toString().replace(/(?:\&|^)[^\&]*?\=(?=\&|$)/g, '');
+      const res = await fetch(`${Constants.serverAddress}/evaluation?${query}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'bearer ' + accessToken,
         },
         cache: 'no-cache',
         credentials: 'include',

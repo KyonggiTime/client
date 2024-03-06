@@ -18,11 +18,12 @@ export default function EvaluationPage() {
 	const [professor, setProfessor] = useState('');
 	const [evaluations, setEvaluations] = useState([]);
 
-	const onSearchButtonClick = () => {
-
+	const onSearchButtonClick = async () => {
+		const data = await EvaluationApi.getEvaluations(lecture, professor);
+		console.dir(data);
 	}
 
-	const onAddButtonClick = () => {
+	const onAddButtonClick = async () => {
 		
 	}
 
