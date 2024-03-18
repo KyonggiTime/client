@@ -39,17 +39,11 @@ export const HeaderBar = () => {
             </Link>
           </p>
         </NavbarBrand>
-        <NavbarContent className="hidden sm:flex gap-4 select-none" justify="center">
+        <NavbarContent className="flex gap-4 select-none" justify="center">
           <NavbarItem>
             <HeaderNavigation />
           </NavbarItem>
         </NavbarContent>
-          <NavbarContent className="sm:hidden" justify="end">
-            <NavbarMenuToggle />
-          </NavbarContent>
-          <NavbarMenu>
-            <HeaderNavigation />
-          </NavbarMenu>
       </Navbar>
     );
 }

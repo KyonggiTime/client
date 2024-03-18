@@ -8,18 +8,6 @@ export const HeaderNavigation = () => {
     const [auth, setAuth] = useRecoilState(authState);
     return (
       <>
-        <Link className="font-bold text-sm mr-6" color="foreground" href="/">
-            홈
-        </Link>
-        <Link className="font-bold text-sm mr-6" color="foreground" href="/timetable">
-            시간표
-        </Link>
-        <Link className="font-bold text-sm mr-6" color="foreground" href="/map">
-            학교 지도
-        </Link>
-        <Link className="font-bold text-sm mr-6" color="foreground" href="/calculator">
-            학점계산기
-        </Link>
         {
           auth.isLoggedIn ?
           (
