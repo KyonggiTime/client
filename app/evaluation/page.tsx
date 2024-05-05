@@ -66,7 +66,7 @@ export default function EvaluationPage() {
 			<Input type="title" placeholder="강의명" className="m-2 w-30" variant="bordered" onChange={(e) => setLecture(e.target.value)}/>
 			<Input type="title" placeholder="교수명" className="m-2 w-30" variant="bordered" onChange={(e) => setProfessor(e.target.value)}/>
 			<Input type="title" placeholder="총평" className="m-2 w-full" variant="bordered" onChange={(e) => setDescription(e.target.value)}/>
-			평점: <Slider   
+			평점: {rate} <Slider   
 				size="lg"
 				step={0.5}
 				color="warning"
@@ -77,7 +77,7 @@ export default function EvaluationPage() {
 				className="max-w-md m-2"
 				onChange={setRate}
 			/>
-			<Button variant="shadow" color="primary" className="m-2 w-30">
+			<Button variant="shadow" color="primary" className="m-2 w-30" onClick={onAddButtonClick}>
 				평가 추가하기
 			</Button>
 		</Card>
