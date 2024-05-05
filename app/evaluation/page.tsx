@@ -47,6 +47,9 @@ export default function EvaluationPage() {
 	return (
 		<>
 		<Card className="flex items-center justify-center p-4 mt-2 mb-2 w-full">
+			<h1 className="m-2 font-bold text-lg text-center">강의평가 수가 아직 부족합니다 ㅠ 많은 참여 부탁드립니다...!!</h1>
+		</Card>
+		<Card className="flex items-center justify-center p-4 mt-2 mb-2 w-full">
 			<h1 className="m-2 font-bold text-lg text-center">강의평가 찾기</h1>
 			<div className="flex-row w-full">
 				<Input type="title" placeholder="강의명" className="m-2 w-30" variant="bordered" onChange={(e) => setLectureForSearch(e.target.value)}/>
