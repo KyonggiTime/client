@@ -65,7 +65,7 @@ export default function EvaluationPage() {
 			))
 		}
 		<Card className="p-4 mt-2">
-			<h1 className="m-2 font-bold text-lg text-center" onClick={onAddButtonClick}>강의평가 추가하기 (로그인 후 이용 가능)</h1>
+			<h1 className="m-2 font-bold text-lg text-center">강의평가 추가하기 (로그인 후 이용 가능)</h1>
 			{
 				auth.token && (
 					<>
