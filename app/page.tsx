@@ -12,11 +12,11 @@ export default function Home() {
 		<>
 		<h1 className="text-2xl mb-2 font-bold text-center w-full">앱 메뉴</h1>
 		<div className="flex flex-wrap gap-4 justify-center">
-			<Card className="flex-col items-center justify-center w-[45%] p-4 cursor-pointer bg-primary-400 text-white shadow-2xl" isPressable onClick={() => push('/evaluation')}>
-				<h1 className="text-2xl">강의평가</h1>
-			</Card>
 			<Card className="flex-col items-center justify-center w-[45%] p-4 cursor-pointer bg-primary-400 text-white shadow-2xl" isPressable onClick={() => push('/timetable')}>
 				<h1 className="text-2xl">시간표</h1>
+			</Card>
+			<Card className="flex-col items-center justify-center w-[45%] p-4 cursor-pointer bg-primary-400 text-white shadow-2xl" isPressable onClick={() => push('/evaluation')}>
+				<h1 className="text-2xl">강의평가</h1>
 			</Card>
 			<Card className="flex-col items-center justify-center w-[45%] p-4 cursor-pointer bg-primary-400 text-white shadow-2xl" isPressable onClick={() => push('/map')}>
 				<h1 className="text-2xl">학교 지도</h1>
