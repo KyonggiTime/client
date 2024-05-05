@@ -21,8 +21,8 @@ export default function Home() {
 			<Card className="flex-col items-center justify-center w-[45%] p-4 cursor-pointer bg-primary-400 text-white shadow-2xl" isPressable onClick={() => push('/calculator')}>
 				<h1 className="text-2xl">학점계산기</h1>
 			</Card>
-			<Card className="flex-col items-center justify-center w-[45%] p-4 cursor-pointer bg-primary-200 text-white shadow-2xl">
-				<h1 className="text-2xl">강의평가 (추가 예정)</h1>
+			<Card className="flex-col items-center justify-center w-[45%] p-4 cursor-pointer bg-primary-400 text-white shadow-2xl" isPressable onClick={() => push('/evaluation')}>
+				<h1 className="text-2xl">강의평가</h1>
 			</Card>
 		</div>
 		<Card className="flex-col items-center justify-center my-6 w-full">

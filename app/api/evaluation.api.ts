@@ -30,8 +30,7 @@ export class EvaluationApi {
     nameOfLecture: string;
     nameOfProfessor: string;
     totalRate: number;
-    assignmentRate: number;
-    markRate: number;
+    description: string;
   }): Promise<void> {
     try {
       await fetch(`${Constants.serverAddress}/evaluation/`, {

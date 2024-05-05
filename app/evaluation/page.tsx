@@ -8,23 +8,40 @@ import { authState } from '@/states/auth';
 import { useRecoilState } from 'recoil';
 import { EvaluationApi } from '@/app/api/evaluation.api';
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function EvaluationPage() {
 	const [auth, setAuth] = useRecoilState(authState);
+	const { push } = useRouter();
 	const [rate, setRate] = useState(5);
 	const [lectureForSearch, setLectureForSearch] = useState('');
 	const [professorForSearch, setProfessorForSearch] = useState('');
 	const [lecture, setLecture] = useState('');
 	const [professor, setProfessor] = useState('');
+	const [description, setDescription] = useState('');
 	const [evaluations, setEvaluations] = useState([]);
 
 	const onSearchButtonClick = async () => {
-		const data = await EvaluationApi.getEvaluations(lecture, professor);
-		console.dir(data);
+		const data = await EvaluationApi.getEvaluations(lectureForSearch, professorForSearch);
+		setEvaluations(data.evaluations);
 	}
 
 	const onAddButtonClick = async () => {
-		
+		if (auth.token == null) {
+			alert('로그인이 필요합니다 ㅠㅠ');
+			push('https://api.kyonggiti.me/google');
+		}
+		try {
+			await EvaluationApi.createEvaluation(auth.token, {
+				nameOfLecture: lecture,
+				nameOfProfessor: professor,
+				totalRate: rate,
+				description,
+			});
+			alert('등록이 완료되었습니다!');
+		} catch (err) {
+			alert('이미 등록 된 강의 평가입니다!');
+		}
 	}
 
 	return (
@@ -39,12 +56,17 @@ export default function EvaluationPage() {
 				검색
 			</Button>
 		</Card>
-		{/* <Evaluation /> */}
+		{
+			evaluations.map(evaluation => (
+				<Evaluation evaluation={evaluation}/>
+			))
+		}
 		<Card className="p-4 mt-2">
-			<h1 className="m-2 font-bold text-lg text-center" onClick={onAddButtonClick}>강의평가 추가하기</h1>
+			<h1 className="m-2 font-bold text-lg text-center" onClick={onAddButtonClick}>강의평가 추가하기 (로그인 후 이용 가능)</h1>
 			<Input type="title" placeholder="강의명" className="m-2 w-30" variant="bordered" onChange={(e) => setLecture(e.target.value)}/>
 			<Input type="title" placeholder="교수명" className="m-2 w-30" variant="bordered" onChange={(e) => setProfessor(e.target.value)}/>
-			<Slider   
+			<Input type="title" placeholder="총평" className="m-2 w-full" variant="bordered" onChange={(e) => setDescription(e.target.value)}/>
+			평점: <Slider   
 				size="lg"
 				step={0.5}
 				color="warning"
