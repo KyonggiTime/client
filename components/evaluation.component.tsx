@@ -8,7 +8,7 @@ export const Evaluation = ({ evaluation }) => {
 						<span className="text-sm text-center">강의명: { evaluation.nameOfLecture }</span>
 						<span className="text-sm text-center">교수: { evaluation.nameOfProfessor }</span>
 						<span className="text-sm text-center">{ evaluation.totalRate }점</span>
-            <p className="col-span-3">총평: { evaluation.description }</p>
+            <p className="col-span-3">{ evaluation.description }</p>
         </Card>
       </>
     );
