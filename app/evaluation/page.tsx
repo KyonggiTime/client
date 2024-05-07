@@ -26,6 +26,10 @@ export default function EvaluationPage() {
 		setEvaluations(data.evaluations);
 	}
 
+	const onLoginButtonClick = () => {
+		push('https://api.kyonggiti.me/google');
+	}
+
 	const onAddButtonClick = async () => {
 		if (auth.token == null) {
 			alert('로그인이 필요합니다 ㅠㅠ');
@@ -67,7 +71,7 @@ export default function EvaluationPage() {
 		<Card className="p-4 mt-2">
 			<h1 className="m-2 font-bold text-lg text-center">강의평가 추가하기 (로그인 후 이용 가능)</h1>
 			{
-				auth.token && (
+				auth.token ? (
 					<>
 						<Input type="title" placeholder="강의명" className="m-2 w-30" variant="bordered" onChange={(e) => setLecture(e.target.value)}/>
 						<Input type="title" placeholder="교수명" className="m-2 w-30" variant="bordered" onChange={(e) => setProfessor(e.target.value)}/>
@@ -83,12 +87,16 @@ export default function EvaluationPage() {
 							className="max-w-md m-2"
 							onChange={setRate}
 						/>
+						<Button variant="shadow" color="primary" className="m-2 w-30" onClick={onAddButtonClick}>
+							평가 추가하기
+						</Button>
 					</>
-				)
+				) : <>
+					<Button variant="shadow" color="primary" className="m-2 w-30" onClick={onLoginButtonClick}>
+						로그인 하러가기
+					</Button>
+				</>
 			}
-			<Button variant="shadow" color="primary" className="m-2 w-30" onClick={onAddButtonClick}>
-				평가 추가하기
-			</Button>
 		</Card>
 		</>
 	);
