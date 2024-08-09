@@ -20,13 +20,13 @@ export default function Home() {
 				<h1 className="flex items-center text-2xl"><AiFillCalendar />&nbsp;시간표</h1>
 			</Card>
 			<Card className="flex-col items-center justify-center w-[45%] p-4 cursor-pointer bg-primary-400 text-white shadow-2xl" isPressable onClick={() => push('/evaluation')}>
-				<h1 className="flex items-center text-2xl"><RiNumbersFill />&nbsp;강의평가</h1>
+				<h1 className="flex items-center text-2xl"><RiNumbersFill />&nbsp;강의평</h1>
 			</Card>
 			<Card className="flex-col items-center justify-center w-[45%] p-4 cursor-pointer bg-primary-400 text-white shadow-2xl" isPressable onClick={() => push('/map')}>
-				<h1 className="flex items-center text-2xl"><FaMap />&nbsp;학교 지도</h1>
+				<h1 className="flex items-center text-2xl"><FaMap />&nbsp;지도</h1>
 			</Card>
 			<Card className="flex-col items-center justify-center w-[45%] p-4 cursor-pointer bg-primary-400 text-white shadow-2xl" isPressable onClick={() => push('/calculator')}>
-				<h1 className="flex items-center text-2xl"><AiFillCalculator />&nbsp;학점계산</h1>
+				<h1 className="flex items-center text-2xl"><AiFillCalculator />&nbsp;학점</h1>
 			</Card>
 		</div>
 		<Card className="flex-col items-center justify-center my-6 w-full">
