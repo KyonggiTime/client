@@ -26,7 +26,7 @@ export default function Home() {
 				<h1 className="flex items-center text-2xl"><FaMap />&nbsp;학교 지도</h1>
 			</Card>
 			<Card className="flex-col items-center justify-center w-[45%] p-4 cursor-pointer bg-primary-400 text-white shadow-2xl" isPressable onClick={() => push('/calculator')}>
-				<h1 className="flex items-center text-2xl"><AiFillCalculator />&nbsp;학점계산기</h1>
+				<h1 className="flex items-center text-2xl"><AiFillCalculator />&nbsp;학점계산</h1>
 			</Card>
 		</div>
 		<Card className="flex-col items-center justify-center my-6 w-full">
@@ -38,7 +38,7 @@ export default function Home() {
 		</Card>
 		<div className="flex flex-wrap gap-4 justify-center">
 			<Card className="flex-col items-center justify-center w-[45%] p-4 cursor-pointer bg-primary-400 text-white shadow-2xl" isPressable onClick={() => push('/help')}>
-				<h1 className="flex items-center text-2xl"><IoIosAlert />&nbsp;공지사항 및 문의</h1>
+				<h1 className="flex items-center text-2xl"><IoIosAlert />&nbsp;문의</h1>
 			</Card>
 			{
 				auth.isLoggedIn ?
