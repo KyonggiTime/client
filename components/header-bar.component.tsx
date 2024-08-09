@@ -1,5 +1,5 @@
 'use client';
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenu, NavbarMenuToggle } from "@nextui-org/navbar";
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from "@nextui-org/navbar";
 import Link from "next/link";
 import { HeaderNavigation } from "./header-navigation";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";

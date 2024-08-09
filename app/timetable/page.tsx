@@ -254,7 +254,7 @@ export default function Home() {
 						</>
 					)
 				}
-			<Card className="flex-col items-center justify-center p-4 mt-2 gap-4 w-full">
+			<Card shadow="none" className="flex-col items-center justify-center p-4 mt-2 gap-4 w-full">
 				<h1 className="text-center text-md font-bold">추가한 강의</h1>
 				{
 					timeTable.lectures &&
@@ -329,7 +329,7 @@ export default function Home() {
 					검색
 				</Button>
 			</Card>
-			<Card className="flex-col items-center justify-center p-4 mt-2 gap-4 w-full">
+			<Card shadow="none" className="flex-col items-center justify-center p-4 mt-2 gap-4 w-full">
 				{
 						lectures.map(lecture => (
 								width <= 800 ? 
