@@ -54,11 +54,8 @@ export default function EvaluationPage() {
 
 	return (
 		<>
-		<Card className="flex items-center justify-center p-4 mt-2 mb-2 w-full">
-			<h1 className="m-2 font-bold text-lg text-center">강의평가 수가 아직 부족합니다 ㅠ 많은 참여 부탁드립니다...!!</h1>
-		</Card>
 		<Card className="p-4 mt-2">
-			<h1 className="m-2 font-bold text-lg text-center">강의평가 추가하기 (로그인 후 이용 가능)</h1>
+			<h1 className="m-2 font-bold text-lg text-center">강의평가</h1>
 			{
 				auth.token ? (
 					<>
@@ -79,29 +76,29 @@ export default function EvaluationPage() {
 						<Button variant="shadow" color="primary" className="m-2 w-30" onClick={onAddButtonClick}>
 							평가 추가하기
 						</Button>
+						<Card className="flex items-center justify-center p-4 mt-2 mb-2 w-full">
+							<h1 className="m-2 font-bold text-lg text-center">강의평가 찾기</h1>
+							<div className="flex-row w-full">
+								<Input type="title" placeholder="강의명" className="m-2 w-30" variant="bordered" onChange={(e) => setLectureForSearch(e.target.value)}/>
+								<Input type="title" placeholder="교수명" className="m-2 w-30" variant="bordered" onChange={(e) => setProfessorForSearch(e.target.value)}/>
+							</div>
+							<Button variant="shadow" color="primary" className="m-2 w-full" onClick={onSearchButtonClick}>
+								검색
+							</Button>
+						</Card>
+						{
+							evaluations.map(evaluation => (
+								<Evaluation evaluation={evaluation}/>
+							))
+						}
 					</>
 				) : <>
 					<Button variant="shadow" color="primary" className="m-2 w-30" onClick={onLoginButtonClick}>
-						로그인 하러가기
+						로그인하고 평가 보러가기
 					</Button>
 				</>
 			}
 		</Card>
-		<Card className="flex items-center justify-center p-4 mt-2 mb-2 w-full">
-			<h1 className="m-2 font-bold text-lg text-center">강의평가 찾기</h1>
-			<div className="flex-row w-full">
-				<Input type="title" placeholder="강의명" className="m-2 w-30" variant="bordered" onChange={(e) => setLectureForSearch(e.target.value)}/>
-				<Input type="title" placeholder="교수명" className="m-2 w-30" variant="bordered" onChange={(e) => setProfessorForSearch(e.target.value)}/>
-			</div>
-			<Button variant="shadow" color="primary" className="m-2 w-full" onClick={onSearchButtonClick}>
-				검색
-			</Button>
-		</Card>
-		{
-			evaluations.map(evaluation => (
-				<Evaluation evaluation={evaluation}/>
-			))
-		}
 		</>
 	);
 }

@@ -1,11 +1,10 @@
 'use client';
 import { authState } from "@/states/auth";
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenu, NavbarMenuToggle } from "@nextui-org/navbar";
 import Link from "next/link";
 import { useRecoilState } from "recoil";
 
 export const HeaderNavigation = () => {
-    const [auth, setAuth] = useRecoilState(authState);
+    const [auth] = useRecoilState(authState);
     return (
       <>
         {
