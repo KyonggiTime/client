@@ -2,7 +2,6 @@ import "@/styles/globals.css";
 import { Metadata } from "next";
 import { Providers } from "./providers";
 import clsx from "clsx";
-import { Divider } from "@nextui-org/divider";
 import { HeaderBar } from "@/components/header-bar.component";
 import { Analytics } from '@vercel/analytics/react';
 import { Noto_Sans_KR } from 'next/font/google';
@@ -75,7 +74,6 @@ export default function RootLayout({
 							<main className="container mx-auto max-w-7xl pt-8 mb-10 px-6 flex-grow">
 								{children}
 							</main>
-							<Divider />
 							<footer className="w-full flex items-center justify-start p-4">
 								<p className="text-sm">
 									서비스명: 경기타임 : 경기대학교 강의 시간표 <br />

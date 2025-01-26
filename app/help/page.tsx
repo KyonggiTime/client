@@ -1,7 +1,5 @@
 'use client'
-import { Button } from "@nextui-org/button";
-import { Card } from "@nextui-org/card";
-import { Input, Textarea } from "@nextui-org/input";
+import { Button, Card, Input, Textarea } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 import { HelpApi } from "../api/help.api";
 import { AccountApi } from "../api/account.api";

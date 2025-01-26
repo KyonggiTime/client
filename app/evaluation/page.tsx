@@ -1,8 +1,5 @@
 'use client'
-import { Button } from "@nextui-org/button";
-import { Card } from "@nextui-org/card";
-import { Input } from "@nextui-org/input";
-import { Slider } from "@nextui-org/slider";
+import { Button, Card, Input, Slider } from "@nextui-org/react";
 import { Evaluation } from "@/components/evaluation.component";
 import { authState } from '@/states/auth';
 import { useRecoilState } from 'recoil';

@@ -1,9 +1,5 @@
 'use client'
-import { Card } from "@nextui-org/card";
-import { Input } from "@nextui-org/input";
-import { Button } from "@nextui-org/button";
-import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@nextui-org/dropdown";
-import { Accordion, AccordionItem } from "@nextui-org/accordion";
+import { Card, Input, Button, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Accordion, AccordionItem } from "@nextui-org/react";
 import { CAMPUS } from "@/config/campus";
 import { GRADE } from "@/config/grade";
 import { LectureApi } from "../api/lecture.api";
