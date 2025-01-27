@@ -92,7 +92,7 @@ export default function StudentId() {
                         </div>
                     ) : studentId === "0" ? (
                         <div className="flex flex-col gap-2 p-4 bg-warning-50 rounded-lg">
-                            <p className="text-warning font-semibold">학번 등록을 위해 KUTIS 로그인이 필요합니다.</p>
+                            <p className="text-warning font-semibold">학번 등록을 위해 KUTIS 로그인이 필요합니다.<br/>로그인 성공 시 학번이 경기타임 DB에 저장됩니다.<br/>비밀번호는 저장되지 않습니다.</p>
                             <form onSubmit={handleSubmit} className="flex flex-col gap-3 mt-2">
                                 <Input
                                     label="학번"
