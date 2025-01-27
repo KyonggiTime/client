@@ -84,4 +84,20 @@ export class AccountApi {
       throw error;
     }
   }
+
+  static async updateStudentId(accessToken: string, studentId: string, password: string): Promise<void> {
+    try {
+        await fetch(`${Constants.serverAddress}/account/student-id`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'bearer ' + accessToken,
+            },
+            body: JSON.stringify({ studentId, password }),
+        });
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+  }
 }
