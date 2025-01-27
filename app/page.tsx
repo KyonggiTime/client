@@ -14,7 +14,6 @@ export default function Home() {
 
 	return (
 		<>
-		<h1 className="text-2xl mb-2 font-bold text-center w-full">앱 메뉴</h1>
 		<div className="flex flex-wrap gap-4 justify-center">
 			<Card className="flex-col items-center justify-center w-[45%] p-4 cursor-pointer bg-primary-400 text-white shadow-2xl" isPressable onClick={() => push('/timetable')}>
 				<h1 className="flex items-center text-2xl"><AiFillCalendar />&nbsp;시간표</h1>
@@ -33,8 +32,6 @@ export default function Home() {
 			<h1 className="text-center font-bold text-md">앱 설치 방법</h1>
 			<h1 className="text-center text-md">아이폰: 사파리 -&gt; 공유 아이콘 -&gt; 홈 화면에 추가</h1>
 			<h1 className="text-center text-md">갤럭시: 크롬 -&gt; 크롬 우측 메뉴 -&gt; 앱 설치</h1>
-			<br/>
-			<h1 className="text-center font-bold text-md">로그인하고 시간표를 휴대폰 / PC와 동기화하세요!</h1>
 		</Card>
 		<div className="flex flex-wrap gap-4 justify-center">
 			<Card className="flex-col items-center justify-center w-[45%] p-4 cursor-pointer bg-primary-400 text-white shadow-2xl" isPressable onClick={() => push('/help')}>

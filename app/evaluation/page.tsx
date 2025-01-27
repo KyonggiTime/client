@@ -4,7 +4,7 @@ import { Evaluation } from "@/components/evaluation.component";
 import { authState } from '@/states/auth';
 import { useRecoilState } from 'recoil';
 import { EvaluationApi } from '@/app/api/evaluation.api';
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function EvaluationPage() {
@@ -18,10 +18,6 @@ export default function EvaluationPage() {
 	const [description, setDescription] = useState('');
 	const [evaluations, setEvaluations] = useState([]);
 
-	useEffect(() => {
-		onSearchButtonClick();
-	}, []);
-
 	const onSearchButtonClick = async () => {
 		const data = await EvaluationApi.getEvaluations(lectureForSearch, professorForSearch);
 		setEvaluations(data.evaluations);
@@ -33,10 +29,14 @@ export default function EvaluationPage() {
 
 	const onAddButtonClick = async () => {
 		if (auth.token == null) {
-			alert('로그인이 필요합니다 ㅠㅠ');
+			alert('로그인이 필요합니다');
 			push('https://api.kyonggiti.me/google');
 		}
 		try {
+			if (lecture == '' && professor == '') {
+				alert('');
+				return;
+			}
 			await EvaluationApi.createEvaluation(auth.token, {
 				nameOfLecture: lecture,
 				nameOfProfessor: professor,
@@ -58,7 +58,7 @@ export default function EvaluationPage() {
 					<>
 						<Input type="title" placeholder="강의명" className="m-2 w-30" variant="bordered" onChange={(e) => setLecture(e.target.value)}/>
 						<Input type="title" placeholder="교수명" className="m-2 w-30" variant="bordered" onChange={(e) => setProfessor(e.target.value)}/>
-						<Input type="title" placeholder="총평" className="m-2 w-full" variant="bordered" onChange={(e) => setDescription(e.target.value)}/>
+						<Input type="title" placeholder="총평" className="m-2 w-30" variant="bordered" onChange={(e) => setDescription(e.target.value)}/>
 						평점: {rate} <Slider   
 							size="lg"
 							step={0.5}
