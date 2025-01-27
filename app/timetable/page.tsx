@@ -258,7 +258,7 @@ export default function Home() {
       container.style.left = '-9999px';
       container.style.top = '-9999px';
       
-      const aspectRatio = 2.2;
+      const aspectRatio = 1.9;
       const mobileWidth = Math.min(window.innerWidth, 400);
       const mobileHeight = mobileWidth * aspectRatio;
       
