@@ -90,7 +90,7 @@ export default function StudentId() {
                                 이 기능은 로그인한 사용자만 사용할 수 있습니다.
                             </p>
                         </div>
-                    ) : studentId === "0" ? (
+                    ) : studentId === "0" && (
                         <div className="flex flex-col gap-2 p-4 bg-warning-50 rounded-lg">
                             <p className="text-warning font-semibold">학번 등록을 위해 KUTIS 로그인이 필요합니다.<br/>QR 생성을 위해 학번을 경기타임 데이터베이스에 저장합니다.<br/>비밀번호는 저장하지 않습니다.</p>
                             <form onSubmit={handleSubmit} className="flex flex-col gap-3 mt-2">
@@ -119,26 +119,25 @@ export default function StudentId() {
                                 </Button>
                             </form>
                         </div>
-                    ) : (
-                        <div className="flex flex-col items-center">
-                            <h1 className="text-3xl">도서관 출입 QR</h1>
-                            <QRCode
-                                value={qrValue}
-                                size={200}
-                                className="p-2"
-                            />
-                            <h1 className="text-3xl">학생증 바코드</h1>
-                            <div className="p-2">
-                                <Barcode
-                                    value={studentId}
-                                    format="CODE39"
-                                    width={1}
-                                    height={100}
-                                    displayValue={false}
-                                />
-                            </div>
-                        </div>
                     )}
+                    <div className="flex flex-col items-center">
+                        <h1 className="text-3xl">도서관 출입 QR</h1>
+                        <QRCode
+                            value={qrValue}
+                            size={200}
+                            className="p-2"
+                        />
+                        <h1 className="text-3xl">학생증 바코드</h1>
+                        <div className="p-2">
+                            <Barcode
+                                value={studentId}
+                                format="CODE39"
+                                width={1}
+                                height={100}
+                                displayValue={false}
+                            />
+                        </div>
+                    </div>
                 </div>
             </Card>
         </div>
