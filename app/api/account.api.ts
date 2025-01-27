@@ -88,7 +88,7 @@ export class AccountApi {
   static async updateStudentId(accessToken: string, studentId: string, password: string): Promise<void> {
     try {
         await fetch(`${Constants.serverAddress}/account/student-id`, {
-            method: 'POST',
+            method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'bearer ' + accessToken,
