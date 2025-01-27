@@ -248,7 +248,7 @@ export default function Home() {
           span.style.transform = 'translate(-50%, -50%)';
           span.style.width = '100%';
           span.style.textAlign = 'center';
-		  span.style.fontSize = '12px';
+		      span.style.fontSize = '10px';
           cell.replaceChild(span, textNode);
         }
       });
@@ -258,7 +258,7 @@ export default function Home() {
       container.style.left = '-9999px';
       container.style.top = '-9999px';
       
-      const aspectRatio = 1.8;
+      const aspectRatio = 2.2;
       const mobileWidth = Math.min(window.innerWidth, 400);
       const mobileHeight = mobileWidth * aspectRatio;
       
