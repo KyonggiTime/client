@@ -78,7 +78,7 @@ export default function StudentId() {
             <Card className="w-full max-w-md">
                 <div className="flex gap-3 p-4">
                     <div className="flex flex-col">
-                        <p className="text-xl font-semibold">학생증 QR</p>
+                        <p className="text-xl text-center font-semibold">학생증</p>
                     </div>
                 </div>
                 <div className="h-px bg-gray-200 w-full" />
@@ -92,7 +92,7 @@ export default function StudentId() {
                         </div>
                     ) : studentId === "0" ? (
                         <div className="flex flex-col gap-2 p-4 bg-warning-50 rounded-lg">
-                            <p className="text-warning font-semibold">학번 등록을 위해 KUTIS 로그인이 필요합니다.<br/>QR 생성을 위해 학번이 경기타임 데이터베이스에 저장합니다.<br/>비밀번호는 저장하지 않습니다.</p>
+                            <p className="text-warning font-semibold">학번 등록을 위해 KUTIS 로그인이 필요합니다.<br/>QR 생성을 위해 학번을 경기타임 데이터베이스에 저장합니다.<br/>비밀번호는 저장하지 않습니다.</p>
                             <form onSubmit={handleSubmit} className="flex flex-col gap-3 mt-2">
                                 <Input
                                     label="학번"
@@ -121,7 +121,7 @@ export default function StudentId() {
                         </div>
                     ) : (
                         <div className="flex flex-col items-center">
-                            <h1 className="text-3xl">도서관 출입 QR코드</h1>
+                            <h1 className="text-3xl">도서관 출입 QR</h1>
                             <QRCode
                                 value={qrValue}
                                 size={200}
@@ -132,7 +132,7 @@ export default function StudentId() {
                                 <Barcode
                                     value={studentId}
                                     format="CODE39"
-                                    width={2}
+                                    width={1}
                                     height={100}
                                     displayValue={false}
                                 />
