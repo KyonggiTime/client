@@ -1,18 +1,25 @@
 'use client';
+import { AccountApi } from "@/app/api/account.api";
 import { authState } from "@/states/auth";
 import Link from "next/link";
 import { useRecoilState } from "recoil";
 
 export const HeaderNavigation = () => {
     const [auth] = useRecoilState(authState);
+
+    const logout = async () => {
+      await AccountApi.logout(auth.token);
+      location.href = 'https://api.kyonggiti.me/google/logout';
+    }
+
     return (
       <>
         {
           auth.isLoggedIn ?
           (
-            <Link className="font-bold text-sm" color="foreground" href="https://api.kyonggiti.me/google/logout">
+            <a className="font-bold text-sm" color="foreground" onClick={logout}>
                 로그아웃
-            </Link>
+            </a>
           ) :
           (
             <Link className="font-bold text-sm" color="foreground" href="https://api.kyonggiti.me/google">

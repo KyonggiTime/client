@@ -100,4 +100,23 @@ export class AccountApi {
         throw error;
     }
   }
+
+  static async logout(accessToken: string): Promise<unknown> {
+    try {
+      const res = await fetch(`${Constants.serverAddress}/account/logout`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'bearer ' + accessToken,
+        },
+        cache: 'no-cache',
+        credentials: 'include',
+      });
+      const body = await res.json();
+      return body;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
 }
