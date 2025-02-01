@@ -248,7 +248,7 @@ export default function Home() {
           span.style.transform = 'translate(-50%, -50%)';
           span.style.width = '100%';
           span.style.textAlign = 'center';
-		      span.style.fontSize = '10px';
+          span.style.fontSize = '10px';
           cell.replaceChild(span, textNode);
         }
       });
@@ -269,7 +269,7 @@ export default function Home() {
       
       const timeTableContainer = document.createElement('div');
       timeTableContainer.style.width = '100%';
-      timeTableContainer.style.height = 'calc(100% + 40px)'; // 워터마크 공간 확보
+      timeTableContainer.style.height = 'calc(100% + 40px)';
       timeTableContainer.appendChild(clone);
       container.appendChild(timeTableContainer);
 
@@ -322,7 +322,18 @@ export default function Home() {
       alert('시간표 다운로드에 실패했습니다.');
       setIsDownloading(false);
     }
-};
+  };
+
+  const shouldShowLectureName = (day, time) => {
+    const lectures = timeTable[day];
+    const currentLecture = lectures.find(l => l.time == time);
+    if (!currentLecture) return false;
+    
+    const prevTime = time - 1;
+    const prevLecture = lectures.find(l => l.time == prevTime);
+    
+    return !prevLecture || prevLecture.lecture.id !== currentLecture.lecture.id;
+  };
 
   return (
     <>
@@ -335,7 +346,6 @@ export default function Home() {
             size="sm"
             onClick={downloadTimetable}
             isDisabled={isDownloading}
-
           >
             {isDownloading ? "이미지 다운로드 중..." : "이미지로 다운로드하기"}
           </Button>
@@ -356,41 +366,18 @@ export default function Home() {
                 <div className="text-sm text-center p-1 sm:p-2 bg-[#0070F0] text-white border border-gray-300 shadow-2xl rounded-xl">
                   {START_TIME[item]}
                 </div>
-                {timeTable['월'].some(time => time.time == item) ? (
-                  <div className="text-sm text-center p-1 sm:p-2 col-span-2 bg-[#90B8E7] text-white border border-gray-300 shadow-2xl rounded-xl">
-                    {timeTable['월'].find(time => time.time == item).lecture.name}
-                  </div>
-                ) : (
-                  <div className="text-sm text-center col-span-2 p-2 bg-white border border-gray-300 shadow-2xl rounded-xl"></div>
-                )}
-                {timeTable['화'].some(time => time.time == item) ? (
-                  <div className="text-sm text-center p-1 sm:p-2 col-span-2 bg-[#90B8E7] text-white border border-gray-300 shadow-2xl rounded-xl">
-                    {timeTable['화'].find(time => time.time == item).lecture.name}
-                  </div>
-                ) : (
-                  <div className="text-sm text-center col-span-2 p-2 bg-white border border-gray-300 shadow-2xl rounded-xl"></div>
-                )}
-                {timeTable['수'].some(time => time.time == item) ? (
-                  <div className="text-sm text-center p-1 sm:p-2 col-span-2 bg-[#90B8E7] text-white border border-gray-300 shadow-2xl rounded-xl">
-                    {timeTable['수'].find(time => time.time == item).lecture.name}
-                  </div>
-                ) : (
-                  <div className="text-sm text-center col-span-2 p-2 bg-white border border-gray-300 shadow-2xl rounded-xl"></div>
-                )}
-                {timeTable['목'].some(time => time.time == item) ? (
-                  <div className="text-sm text-center p-1 sm:p-2 col-span-2 bg-[#90B8E7] text-white border border-gray-300 shadow-2xl rounded-xl">
-                    {timeTable['목'].find(time => time.time == item).lecture.name}
-                  </div>
-                ) : (
-                  <div className="text-sm text-center col-span-2 p-2 bg-white border border-gray-300 shadow-2xl rounded-xl"></div>
-                )}
-                {timeTable['금'].some(time => time.time == item) ? (
-                  <div className="text-sm text-center p-1 sm:p-2 col-span-2 bg-[#90B8E7] text-white border border-gray-300 shadow-2xl rounded-xl">
-                    {timeTable['금'].find(time => time.time == item).lecture.name}
-                  </div>
-                ) : (
-                  <div className="text-sm text-center col-span-2 p-2 bg-white border border-gray-300 shadow-2xl rounded-xl"></div>
-                )}
+                {['월', '화', '수', '목', '금'].map(day => {
+                  const hasLecture = timeTable[day].some(time => time.time == item);
+                  const shouldShowName = shouldShowLectureName(day, item);
+                  
+                  return hasLecture ? (
+                    <div key={day} className="text-sm text-center p-1 sm:p-2 col-span-2 bg-[#90B8E7] text-white border border-gray-300 shadow-2xl rounded-xl">
+                      {shouldShowName ? timeTable[day].find(time => time.time == item).lecture.name : ''}
+                    </div>
+                  ) : (
+                    <div key={day} className="text-sm text-center col-span-2 p-2 bg-white border border-gray-300 shadow-2xl rounded-xl"></div>
+                  );
+                })}
               </div>
             ))}
         </div>
