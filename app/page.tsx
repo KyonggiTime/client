@@ -40,12 +40,12 @@ export default function Home() {
 			{
 				auth.isLoggedIn ?
 				(
-					<Card className="flex-col items-center justify-center w-[45%] p-4 cursor-pointer bg-primary-400 text-white shadow-2xl" isPressable onClick={() => push('https://server.kyonggiti.me/google/logout')}>
+					<Card className="flex-col items-center justify-center w-[45%] p-4 cursor-pointer bg-primary-400 text-white shadow-2xl" isPressable onClick={() => push('https://api.kyonggiti.me/google/logout')}>
 						<h1 className="flex items-center text-2xl"><FaGoogle />&nbsp;로그아웃</h1>
 					</Card>
 				) :	
 				(
-					<Card className="flex-col items-center justify-center w-[45%] p-4 cursor-pointer bg-primary-400 text-white shadow-2xl" isPressable onClick={() => push('https://server.kyonggiti.me/google')}>
+					<Card className="flex-col items-center justify-center w-[45%] p-4 cursor-pointer bg-primary-400 text-white shadow-2xl" isPressable onClick={() => push('https://api.kyonggiti.me/google')}>
 						<h1 className="flex items-center text-2xl"><FaGoogle />&nbsp;로그인</h1>
 					</Card>
 				)
