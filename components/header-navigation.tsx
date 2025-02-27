@@ -9,7 +9,7 @@ export const HeaderNavigation = () => {
 
     const logout = async () => {
       await AccountApi.logout(auth.token);
-      location.href = 'https://server.kyonggiti.me/google/logout';
+      location.href = 'https://dev.jinhy.uk/google/logout';
     }
 
     return (
@@ -22,7 +22,7 @@ export const HeaderNavigation = () => {
             </a>
           ) :
           (
-            <Link className="font-bold text-sm" color="foreground" href="https://server.kyonggiti.me/google">
+            <Link className="font-bold text-sm" color="foreground" href="https://dev.jinhy.uk/google">
                 로그인
             </Link>
           )
