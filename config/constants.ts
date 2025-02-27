@@ -3,5 +3,5 @@ interface ConstantsInterface {
 }
 
 export const Constants: ConstantsInterface = {
-    serverAddress: "https://dev.jinhy.uk",
+    serverAddress: "https://server.kyonggiti.me",
 }

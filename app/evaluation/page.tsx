@@ -24,13 +24,13 @@ export default function EvaluationPage() {
 	}
 
 	const onLoginButtonClick = () => {
-		push('https://dev.jinhy.uk/google');
+		push('https://server.kyonggiti.me/google');
 	}
 
 	const onAddButtonClick = async () => {
 		if (auth.token == null) {
 			alert('로그인이 필요합니다');
-			push('https://dev.jinhy.uk/google');
+			push('https://server.kyonggiti.me/google');
 		}
 		try {
 			if (lecture == '' && professor == '') {
